@@ -89,8 +89,7 @@ class Numero {
  */
    
    
-   //ESTA SUMA SOLO SUMA POSITIVOS. PARA SUMAR UN POSITIVO CON UN NEGATIVO (O VICEVERSA), EL METODO RESTA CONTIENE TODO LO NECESARIO. 
-   //SIMPLEMENTE TOME a+(-b) como a-b y (-a)+b como b-a; donde a,b son numeros enteros positivos.
+   //ESTA SUMA SOLO SUMA POSITIVOS. SIN EMBARGO, ES USADA COMO BASE EN LA MAYOR PARTE DEL CÓDIGO. PARA SUMAR NEGATIVOS, VER METODO sumaMejorada
    public Numero Sumar( Numero sumando ) {
 
       int tam1, tam2;
@@ -130,6 +129,35 @@ class Numero {
    }
 
 
+   
+    public Numero sumaMejorada ( Numero otro ) {
+
+Numero suma=new Numero(0);    
+
+
+if(!this.esNegativo() && !otro.esNegativo() ) {suma= this.Sumar(otro);}
+
+else if( this.esNegativo() && !otro.esNegativo() ) {suma= this.Restar(otro);}  
+else if( !this.esNegativo() && otro.esNegativo() ) {suma= this.Restar(otro.Abs());}
+else if( this.esNegativo() && otro.esNegativo() ) {suma= this.Restar(otro.Abs());}      
+
+return suma;
+
+   }
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
 /**
  * Determina si un Numero es igual a otro, comparando los digitos de las potencias mayores a las menores
  * @param	Numero	otro, el Numero con el que se compara (this == otro)
@@ -439,14 +467,19 @@ public boolean esNegativo() { //listo y funciona
          Numero numero5 = new Numero( -5 );
 
      System.out.println("A continuacion algunas pruebas del codigo");
+     System.out.println(numero1.toString()+" mas "+numero2.toString()+" es igual a "+numero1.sumaMejorada(numero2));
+     System.out.println(numero2.toString()+" mas "+numero1.toString()+" es igual a "+numero2.sumaMejorada(numero1));
+     System.out.println(numero3.toString()+" mas "+numero1.toString()+" es igual a "+numero3.sumaMejorada(numero1));//corregir
+     System.out.println(numero1.toString()+" mas "+numero3.toString()+" es igual a "+numero4.sumaMejorada(numero2));
+     System.out.println(numero3.toString()+" mas "+numero4.toString()+" es igual a "+numero3.sumaMejorada(numero4));
+     System.out.println(numero4.toString()+" mas "+numero3.toString()+" es igual a "+numero4.sumaMejorada(numero3));
      System.out.println(numero1.toString()+" menos "+numero2.toString()+" es igual a "+numero1.Restar(numero2));
      System.out.println(numero2.toString()+" menos "+numero1.toString()+" es igual a "+numero2.Restar(numero1));
      System.out.println(numero3.toString()+" menos "+numero1.toString()+" es igual a "+numero3.Restar(numero1));
      System.out.println(numero3.toString()+" menos "+numero2.toString()+" es igual a "+numero3.Restar(numero2));
-
-     
-     System.out.println("Note ademas que "+ numero4.toString()+" multiplicado por "+numero5.toString()+" es igual a "+numero4.Multiplicar(numero5));
-
+     System.out.println(numero4.toString()+" multiplicado por "+numero5.toString()+" es igual a "+numero4.Multiplicar(numero5));
+      System.out.println(numero4.toString()+" multiplicado por "+numero4.toString()+" es igual a "+numero5.Multiplicar(numero5));
+     System.out.println(numero3.toString()+" multiplicado por "+numero4.toString()+" es igual a "+numero3.Multiplicar(numero4));
      System.out.println("Y finalmente que "+ numero3.toString()+" multiplicado por "+numero4.toString()+" es igual a "+numero3.Multiplicar(numero4));
      
      
