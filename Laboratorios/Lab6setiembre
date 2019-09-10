@@ -40,8 +40,8 @@ class Numero {
  * @param       int v   entero para construir el numero
  * @return      Numero         una instacia de la clase Numero
  */
-    Numero( int v ) {
-        this.numero = new StringBuffer ( Integer.toString( v ) );
+    Numero( Long v ) {
+        this.numero = new StringBuffer ( Long.toString( v ) );
         this.largo = this.numero.length();
     }
 
@@ -89,12 +89,11 @@ class Numero {
  */
    
    
-   //ESTA SUMA SOLO SUMA POSITIVOS. PARA SUMAR UN POSITIVO CON UN NEGATIVO (O VICEVERSA), EL METODO RESTA CONTIENE TODO LO NECESARIO. 
-   //SIMPLEMENTE TOME a+(-b) como a-b y (-a)+b como b-a; donde a,b son numeros enteros positivos.
+   //ESTA SUMA SOLO SUMA POSITIVOS. SIN EMBARGO, ES USADA COMO BASE EN LA MAYOR PARTE DEL CÓDIGO. PARA SUMAR NEGATIVOS, VER METODO sumaMejorada
    public Numero Sumar( Numero sumando ) {
 
-      int tam1, tam2;
-      int maximo, digito1, digito2, suma, llevo;
+      long tam1, tam2;
+      long maximo, digito1, digito2, suma, llevo;
       StringBuffer resultado;
 
      tam1 = this.numero.length();
@@ -118,11 +117,11 @@ class Numero {
             llevo = 1;
             suma = suma - 10;
          }
-         resultado.insert( 0, Integer.toString( suma ) );
+         resultado.insert( 0, Long.toString( suma ) );
       }
 
       if ( llevo > 0 ) {
-         resultado.insert( 0, Integer.toString( llevo ) );
+         resultado.insert( 0, Long.toString( llevo ) );
       }
 
       return new Numero( resultado.toString() );
@@ -130,6 +129,35 @@ class Numero {
    }
 
 
+   
+    public Numero sumaMejorada ( Numero otro ) {
+
+Numero suma=new Numero((long)0);    
+
+
+if(!this.esNegativo() && !otro.esNegativo() ) {suma= this.Sumar(otro);}
+
+else if( this.esNegativo() && !otro.esNegativo() ) {suma= otro.Restar(this.Abs());}  
+else if( !this.esNegativo() && otro.esNegativo() ) {suma= this.Restar(otro.Abs());}
+else if( this.esNegativo() && otro.esNegativo() ) {suma= this.Restar(otro.Abs());}      
+
+return suma;
+
+   }
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
 /**
  * Determina si un Numero es igual a otro, comparando los digitos de las potencias mayores a las menores
  * @param	Numero	otro, el Numero con el que se compara (this == otro)
@@ -139,15 +167,15 @@ public boolean esIgual( Numero otro ) {
   
   boolean Igual = true;
   boolean todavia=true;
-  int tam1 = this.numero.length();
-  int  tam2 = otro.numero.length();
-  int   maximo = tam1;
+  long tam1 = this.numero.length();
+  long  tam2 = otro.numero.length();
+  long   maximo = tam1;
   if ( tam1 < tam2 ) {
          maximo = tam2;}
   
    
    //Nota para mí mismo: De acá se puede aprender algo importante sobre cómo posicionar composiciones de if, for y while. Estudiarlo
-   for(int i= maximo-1;i>=0;){ while(todavia==true){
+   for(long i= maximo-1;i>=0;){ while(todavia==true){
    if( this.deme(i)>otro.deme(i)){Igual=false; todavia =false;i=i-1;}
    else if( this.deme(i)<otro.deme(i)){Igual=false; todavia =false;i=i-1;}
    else if( i==0 && Igual==true && todavia==true){ todavia =false;i=i-1;}
@@ -172,15 +200,15 @@ return Igual;
 public boolean esMayor( Numero otro ) { //TODAS LAS DESIGUALDADES ESTÁ LISTAS Y FUNCIONAN TANTO PARA POSITIVOS COMO NEGATIVOS
   boolean mayor = false;
   boolean todavia=true;
-  int tam1 = this.numero.length();
-  int  tam2 = otro.numero.length();
-  int   maximo = tam1;
+  long tam1 = this.numero.length();
+  long  tam2 = otro.numero.length();
+  long   maximo = tam1;
   if ( tam1 < tam2 ) {
          maximo = tam2;}
   
    
    //Nota para mí mismo: De acá se puede aprender algo importante sobre cómo posicionar composiciones de if, for y while. Estudiarlo
-   for(int i= maximo-1;i>=0;i=i-1){ while(todavia==true){
+   for(long i= maximo-1;i>=0;i=i-1){ while(todavia==true){
    if( this.deme(i)>otro.deme(i)){mayor=true; todavia =false;}
    else if( this.deme(i)<otro.deme(i)){mayor=false; todavia =false;}
    else if( i==0 && mayor==false && todavia==true){ todavia =false;}
@@ -209,7 +237,7 @@ public boolean esMenor( Numero otro ) {
  */
 public boolean esNegativo() { //listo y funciona
    boolean resultado = false;
-    int tam1 = this.numero.length()-1; 
+    long tam1 = this.numero.length()-1; 
     
   if(this.deme(tam1)<0){resultado=true;}
 
@@ -232,8 +260,8 @@ public boolean esNegativo() { //listo y funciona
      
              
        
-       int tam1, tam2;
-      int maximo, digito1, digito2, resta, pido;
+      long tam1, tam2;
+      long maximo, digito1, digito2, resta, pido;
       StringBuffer diferencia;
       diferencia = new StringBuffer( "" ); 
        
@@ -247,7 +275,7 @@ public boolean esNegativo() { //listo y funciona
 
       pido = 0;
      
-      for ( int digitos = 0; digitos < maximo; digitos++ ) 
+      for ( long digitos = 0; digitos < maximo; digitos++ ) 
       {  digito1 = this.deme( digitos );
          digito2 = sustraendo.deme( digitos );
          digito1 = digito1 - pido;
@@ -256,7 +284,7 @@ public boolean esNegativo() { //listo y funciona
             pido = 1;} 
                   else { resta = digito1 - digito2;  pido = 0;}
 
-         diferencia.insert( 0, Integer.toString( resta ) );	// Agrega al inicio de la tira
+         diferencia.insert( 0, Long.toString( resta ) );	// Agrega al inicio de la tira
 
       }
 
@@ -323,8 +351,8 @@ public boolean esNegativo() { //listo y funciona
       
        public Numero Abs() { //El valor absoluto está listo y funciona
    StringBuffer absoluto;
-      int suma;
-      int digito;
+      long suma;
+      Long digito;
       absoluto = new StringBuffer( "" );
      
    
@@ -332,7 +360,7 @@ public boolean esNegativo() { //listo y funciona
       
       for ( int digitos = 0; digitos < this.numero.length(); digitos++) {
           suma = this.deme(digitos);
-          absoluto.insert(0, Integer.toString( suma ) );
+          absoluto.insert(0, Long.toString( suma ) );
      
       }
       }
@@ -340,10 +368,10 @@ public boolean esNegativo() { //listo y funciona
       if(this.deme( this.numero.length()-1)<0){
   
           
-      for ( int digitos = 0; digitos <this.numero.length()-1; digitos++) {
+      for ( long digitos = 0; digitos <this.numero.length()-1; digitos++) {
          digito= this.deme( digitos );
             suma = this.deme(digitos);
-          absoluto.insert(0, Integer.toString( suma ) );
+          absoluto.insert(0, Long.toString( suma ) );
       
              
           
@@ -370,16 +398,16 @@ public boolean esNegativo() { //listo y funciona
 
      ;
       StringBuffer resultado= new StringBuffer( "" );  ;
-      Numero previo=new Numero(0);
+      Numero previo=new Numero((long)0);
 
            
-      int j=1;
+      long j=1;
       Numero numeroesp = new Numero(j);
       boolean i=true;
       while(  i==true  ){
           
       Numero contador= factor2.Abs().Restar(numeroesp);
-      i=(contador.esMayor(new Numero(0)));
+      i=(contador.esMayor(new Numero((long)0)));
       
             
       previo=previo.Sumar(this.Abs());
@@ -411,14 +439,15 @@ public boolean esNegativo() { //listo y funciona
  * @return	int	el valor del digito en la posicion 10 a la potencia p
 **/
 
-    public int deme( int p ) {
+    public long deme( long p ) {
 
-        int i, r;
+        long r;
+        int i;
         if ( p >= largo ) {
             r = 0;
         } else {
-           i = largo - p - 1;
-           r = numero.charAt( i ) - '0' ;	// Se le resta "0" para obtener el valor como un entero
+           i = largo - (int)p - 1;
+           r = (long)numero.charAt( i ) - '0' ;	// Se le resta "0" para obtener el valor como un entero
         }
 
         return r;
@@ -432,25 +461,34 @@ public boolean esNegativo() { //listo y funciona
  */
    public static void main( String args [] ) {
 
-       Numero numero1 = new Numero( -150);
-       Numero numero2 = new Numero( -1500);
-       Numero numero3 = new Numero( 200 );
-       Numero numero4 = new Numero( 10 );
-         Numero numero5 = new Numero( -5 );
+       long i;
+       i=100000000000000000L;
+       Numero numero1 = new Numero( (long)-100);
+       Numero numero2 = new Numero( i);
+       Numero numero3 = new Numero( (long)200 );
+       Numero numero4 = new Numero( (long)10 );
+       Numero numero5 = new Numero( (long)-5 );
+       Numero numero6 = new Numero( (long)-200000000000L );
 
      System.out.println("A continuacion algunas pruebas del codigo");
+     System.out.println(numero1.toString()+" mas "+numero2.toString()+" es igual a "+numero1.sumaMejorada(numero2));
+     System.out.println(numero2.toString()+" mas "+numero1.toString()+" es igual a "+numero2.sumaMejorada(numero1));
+     System.out.println(numero3.toString()+" mas "+numero1.toString()+" es igual a "+numero3.sumaMejorada(numero1));
+     System.out.println(numero1.toString()+" mas "+numero3.toString()+" es igual a "+numero1.sumaMejorada(numero3));
+     System.out.println(numero3.toString()+" mas "+numero4.toString()+" es igual a "+numero3.sumaMejorada(numero4));
+     System.out.println(numero4.toString()+" mas "+numero3.toString()+" es igual a "+numero4.sumaMejorada(numero3));
      System.out.println(numero1.toString()+" menos "+numero2.toString()+" es igual a "+numero1.Restar(numero2));
      System.out.println(numero2.toString()+" menos "+numero1.toString()+" es igual a "+numero2.Restar(numero1));
      System.out.println(numero3.toString()+" menos "+numero1.toString()+" es igual a "+numero3.Restar(numero1));
      System.out.println(numero3.toString()+" menos "+numero2.toString()+" es igual a "+numero3.Restar(numero2));
-
-     
-     System.out.println("Note ademas que "+ numero4.toString()+" multiplicado por "+numero5.toString()+" es igual a "+numero4.Multiplicar(numero5));
-
-     System.out.println("Y finalmente que "+ numero3.toString()+" multiplicado por "+numero4.toString()+" es igual a "+numero3.Multiplicar(numero4));
-     
-     
-     
-     
+     System.out.println(numero4.toString()+" multiplicado por "+numero5.toString()+" es igual a "+numero4.Multiplicar(numero5));
+     System.out.println(numero4.toString()+" multiplicado por "+numero3.toString()+" es igual a "+numero4.Multiplicar(numero3));
+     System.out.println(numero3.toString()+" multiplicado por "+numero4.toString()+" es igual a "+numero3.Multiplicar(numero4));
+     System.out.println("Similarmente, "+ numero6.toString()+" multiplicado por "+numero4.toString()+" es igual a "+numero6.Multiplicar(numero4));
+     System.out.println("Note ademas que decir que " +numero1 + " es negativo es " + numero1.esNegativo());
+     System.out.println("Decir que " +numero1 + " es mayor que " + numero2+" es " +numero1.esMayor(numero2));
+     System.out.println("Es evidente ademas que decir que " +numero1 + " es igual que " + numero1+" es " +numero1.esIgual(numero1));
+   
+ System.out.println("Y el valor absoluto de " +numero1 + " es igual a " + numero1.Abs());   
    }
 }
