@@ -1,5 +1,16 @@
-
-//Nota: AUN ESTOY TRABAJANDO SOBRE ESTE CÓDIGO, FALTAN UN PAR DE COSAS FUNDAMENTALES PERO QUE SON INMEDIATAS A PARTIR DEL MISMO
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package collar3;
+   
+/**
+ *
+ * @author Carlos
+ */
+public class Collar3 {
+//Nota: ESTA VERSIÓN ESTÁ CERCA DE SER LA FINAL
 
 
 /**
@@ -87,14 +98,14 @@ for(;m>=1; ){
 if(m==1 && negro==true) {
    
     
-                        for(int j=collar.length; j>=1;j--){ if(collar[j-1]=='n'||collar[j-1]=='t'){izquierda=izquierda+1;}else{j=0;break; };     } 
+                        for(int j=collar.length-2; j>=0;j--){ if(collar[j-1]=='n'||collar[j-1]=='t'){izquierda=izquierda+1;}else{j=0;break; };     } 
  
                         }       
 
 if(m==1 && negro==false) {
     
      
-                        for(int j=collar.length; j>=1;j--){ if(collar[j-1]=='b' ||collar[j-1]=='t'){izquierda=izquierda+1;}else{j=0; break;};     } 
+                        for(int j=collar.length-2; j>=0;j--){ if(collar[j-1]=='b' ||collar[j-1]=='t'){izquierda=izquierda+1;}else{j=0; break;};     } 
  
                         }
 
@@ -226,17 +237,19 @@ if(sumaMaxima<=suma){maximo=u; derechaMaxima=derecha; izquierdaMaxima=izquierda;
     public static void main(String[] args) {
     
         char[] ch1 ={'b','t','n','n' , 'b','n','b','t','b','t','b','b','b','b','t'};
-        
+        char[] ch2 ={'b','t','n','n' , 'b','n','b','t','b','t','b','b','b'}; 
       
         //System.out.println("las perlas a la derecha son "+ puntoDeCorte(ch1)[0] +" las perlas a la izq son "+puntoDeCorte(ch1)[1]);
 
       
       System.out.println("lo máximo que se puede obtener del collar 1 son  "+puntoDeCorte(ch1)[0]+" perlas si se corta en la posición" +puntoDeCorte(ch1)[3]);  
       System.out.println("en ese punto la suma por la derecha son en ese corte son de "+puntoDeCorte(ch1)[1]+"  perlas y por la izquierda" +puntoDeCorte(ch1)[2]);  
-        
+      System.out.println("lo máximo que se puede obtener del collar 1 son  "+puntoDeCorte(ch2)[0]+" perlas si se corta en la posición" +puntoDeCorte(ch2)[3]);  
+      System.out.println("en ese punto la suma por la derecha son en ese corte son de "+puntoDeCorte(ch2)[1]+"  perlas y por la izquierda" +puntoDeCorte(ch2)[2]);  
         
         
         
     }
     
 }
+
