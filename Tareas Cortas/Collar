@@ -1,4 +1,3 @@
-/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -10,7 +9,7 @@ package collar3;
  * @author Carlos
  */
 public class Collar3 {
-//Nota: ESTA VERSIÓN ESTÁ CERCA DE SER LA FINAL
+//Nota: AUN ESTOY TRABAJANDO SOBRE ESTE CÓDIGO, FALTAN UN PAR DE COSAS FUNDAMENTALES PERO QUE SON INMEDIATAS A PARTIR DEL MISMO
 
 
 /**
@@ -90,6 +89,21 @@ if(negro==false){color='b';otrocolor='n';}else{color='n'; otrocolor='b';}
 int m=corte;
 
 
+
+
+//hay que crear lso casos en que se corta en las orillas
+
+
+
+
+if(m==0){   for(int j=collar.length-1; j>=0;j--){ if(collar[j]=='n'||collar[j]=='t'){izquierda=izquierda+1;}else{j=0;break; };   }; };
+if(m==collar.length){for(int j= 0; j<= collar.length-1;j++){ if(collar[j]==color||collar[j]=='t'){izquierda=izquierda+1;}else{j=0;};     }  };
+
+
+
+
+
+
 for(;m>=1; ){ 
    
     if (collar[m-1]==color || collar[m-1]=='t'){   izquierda=izquierda+1; }
@@ -98,14 +112,14 @@ for(;m>=1; ){
 if(m==1 && negro==true) {
    
     
-                        for(int j=collar.length-2; j>=0;j--){ if(collar[j-1]=='n'||collar[j-1]=='t'){izquierda=izquierda+1;}else{j=0;break; };     } 
+                        for(int j=collar.length-1; j>=0;j--){ if(collar[j]=='n'||collar[j]=='t'){izquierda=izquierda+1;}else{j=0;break; };     } 
  
                         }       
 
 if(m==1 && negro==false) {
     
      
-                        for(int j=collar.length-2; j>=0;j--){ if(collar[j-1]=='b' ||collar[j-1]=='t'){izquierda=izquierda+1;}else{j=0; break;};     } 
+                        for(int j=collar.length-1; j>=0;j--){ if(collar[j]=='b' ||collar[j]=='t'){izquierda=izquierda+1;}else{j=0; break;};     } 
  
                         }
 
@@ -186,6 +200,11 @@ if(negro2==false){color2='b';otrocolor2='n';}else{color2='n'; otrocolor2='b';}
 int m2=corte;
 
 
+
+if(m2==0){   for(int j=collar.length-1; j>=0;j--){ if(collar[j]=='n'||collar[j]=='t'){derecha=derecha+1;}else{j=0;break; };   }; };
+if(m2==collar.length){for(int j= 0; j<= collar.length-1;j++){ if(collar[j]==color||collar[j]=='t'){derecha=derecha+1;}else{j=0;};     }  };
+
+
 for(;m2<=collar.length-1; ){ 
    
     if (collar[m2]==color2 || collar[m2]=='t'){   derecha=derecha+1; }
@@ -236,20 +255,24 @@ if(sumaMaxima<=suma){maximo=u; derechaMaxima=derecha; izquierdaMaxima=izquierda;
      */
     public static void main(String[] args) {
     
-        char[] ch1 ={'b','t','n','n' , 'b','n','b','t','b','t','b','b','b','b','t'};
+        char[] ch1 ={'b','t','n','n' ,'b','n','b','t','b','t','b','b','b','b','t'};
         char[] ch2 ={'b','t','n','n' , 'b','n','b','t','b','t','b','b','b'}; 
+        char[] ch3 ={'b','t','n','n' , 'b','n','b','t','b','t','n','n','n'}; 
       
         //System.out.println("las perlas a la derecha son "+ puntoDeCorte(ch1)[0] +" las perlas a la izq son "+puntoDeCorte(ch1)[1]);
 
       
-      System.out.println("lo máximo que se puede obtener del collar 1 son  "+puntoDeCorte(ch1)[0]+" perlas si se corta en la posición" +puntoDeCorte(ch1)[3]);  
-      System.out.println("en ese punto la suma por la derecha son en ese corte son de "+puntoDeCorte(ch1)[1]+"  perlas y por la izquierda" +puntoDeCorte(ch1)[2]);  
-      System.out.println("lo máximo que se puede obtener del collar 1 son  "+puntoDeCorte(ch2)[0]+" perlas si se corta en la posición" +puntoDeCorte(ch2)[3]);  
-      System.out.println("en ese punto la suma por la derecha son en ese corte son de "+puntoDeCorte(ch2)[1]+"  perlas y por la izquierda" +puntoDeCorte(ch2)[2]);  
+      System.out.println("lo máximo que se puede obtener del collar 1 son  "+puntoDeCorte(ch1)[0]+" perlas si se corta en la posición   " +puntoDeCorte(ch1)[3]);  
+      System.out.println("en ese punto la suma por la derecha son  de "+puntoDeCorte(ch1)[1]+"  perlas y por la izquierda" +puntoDeCorte(ch1)[2]);  
+      System.out.println("lo máximo que se puede obtener del collar 2 son  "+puntoDeCorte(ch2)[0]+" perlas si se corta en la posición " +puntoDeCorte(ch2)[3]);  
+      System.out.println("en ese punto la suma por la derecha son de "+puntoDeCorte(ch2)[1]+"  perlas y por la izquierda" +puntoDeCorte(ch2)[2]);  
+      System.out.println("lo máximo que se puede obtener del collar 3 son  "+puntoDeCorte(ch3)[0]+" perlas si se corta en la posición " +puntoDeCorte(ch3)[3]);  
+      System.out.println("en ese punto la suma por la derecha son de "+puntoDeCorte(ch3)[1]+"  perlas y por la izquierda " +puntoDeCorte(ch3)[2]);  
         
         
         
     }
     
 }
+
 
