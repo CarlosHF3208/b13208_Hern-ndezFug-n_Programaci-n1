@@ -1,8 +1,4 @@
-/*+  
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+*/
 package collar3;
    
 /**
@@ -87,7 +83,7 @@ if(negro==false){color='b';otrocolor='n';}else{color='n'; otrocolor='b';}
 
 
 
-int m=corte;
+int m=u;
 
 
 
@@ -97,7 +93,7 @@ int m=corte;
 
 
 
-if(m==0){   for(int j=collar.length-1; j>=0;j--){ if(collar[j]=='n'||collar[j]=='t'){izquierda=izquierda+1;}else{j=0;break; };   }; };
+if(m==0){   for(int j=collar.length-1; j>=0;j--){ if(collar[j]==color||collar[j]=='t'){izquierda=izquierda+1;}else{j=0;break; };   }; };
 if(m==collar.length){for(int j= 0; j<= collar.length-1;j++){ if(collar[j]==color||collar[j]=='t'){izquierda=izquierda+1;}else{j=0;};     }  };
 
 
@@ -198,12 +194,12 @@ if(negro2==false){color2='b';otrocolor2='n';}else{color2='n'; otrocolor2='b';}
 
 
 
-int m2=corte;
+int m2=u;
 
 
 
-if(m2==0){   for(int j=collar.length-1; j>=0;j--){ if(collar[j]=='n'||collar[j]=='t'){derecha=derecha+1;}else{j=0;break; };   }; };
-if(m2==collar.length){for(int j= 0; j<= collar.length-1;j++){ if(collar[j]==color||collar[j]=='t'){derecha=derecha+1;}else{j=0;};     }  };
+if(m2==0){   for(int j=collar.length-1; j>=0;j--){ if(collar[j]==color2||collar[j]=='t'){derecha=derecha+1;}else{j=0;break; };   }; };
+if(m2==collar.length){for(int j= 0; j<= collar.length-1;j++){ if(collar[j]==color2||collar[j]=='t'){derecha=derecha+1;}else{j=0;};     }  };
 
 
 for(;m2<=collar.length-1; ){ 
@@ -268,8 +264,7 @@ if(sumaMaxima<=suma){maximo=u; derechaMaxima=derecha; izquierdaMaxima=izquierda;
         char[] ch1 ={'b','t','n','n' ,'b','n','b','t','b','t','b','b','b','b','t'};
         char[] ch2 ={'b','t','n','n' , 'b','n','b','t','b','t','b','b','b'}; 
         char[] ch3 ={'b','t','n','n' , 'b','n','b','t','b','t','n','n','n'}; 
-        
-       char[] ch4 ={'b','b', 'b', 'b'};// Este es un caso especial en el que el algoritmo previene de sobrestimar
+        char[] ch4 ={'b','b', 'b', 'b', 'n'};// Este es un caso especial en el que el algoritmo previene de sobrestimar
       
         //System.out.println("las perlas a la derecha son "+ puntoDeCorte(ch1)[0] +" las perlas a la izq son "+puntoDeCorte(ch1)[1]);
 
@@ -289,4 +284,6 @@ if(sumaMaxima<=suma){maximo=u; derechaMaxima=derecha; izquierdaMaxima=izquierda;
     }
     
 }
+
+
 
