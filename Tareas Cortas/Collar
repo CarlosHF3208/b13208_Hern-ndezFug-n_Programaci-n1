@@ -1,1 +1,133 @@
+//Nota: AUN ESTOY TRABAJANDO SOBRE ESTE CÓDIGO, FALTAN UN PAR DE COSAS FUNDAMENTALES PERO QUE SON INMEDIATAS A PARTIR DEL MISMO
 
+
+/**
+ *
+ * @author Carlos
+ */
+public class Collar2 {
+
+  
+    
+    
+    
+    public static int [] puntoDeCorte(  char [ ] collar ){
+    int r[]= new int [4];
+    r[0]=2;
+    r[1]=2;
+    int corte=1;
+  
+    
+   boolean negro=true;
+   boolean siga=true;
+   int k=corte;//número de la entrada donde corto
+    
+    
+    // primero obtenemos el color del cual sacaremos las bolitas.
+  while(siga==true){  
+        
+for(;k>=1;)                             {   
+    
+
+if(collar[k-1]!='t'){
+    
+    
+    if(collar[k-1]=='b'){negro=false; siga=false;k=0;}else if(collar[k-1]=='n'){ siga=false; k=0;}else{k--;}   } //falta caso en que lleguemos a cero y sigan siendo ts
+
+if(k==1 && negro==true) {
+    
+    
+                        for(int j=collar.length; j>=1;j--){ if(collar[j-1]=='n'){negro=false; siga=false;};     } 
+ 
+                        }                   
+
+
+k--;
+
+}
+ 
+
+                                        };
+                                        
+                                        
+//ya que tenemos el color de las perlas que vamos a sacar, vamos contando las entradas que son de ese color o son transparentes.
+  int suma;
+  int derecha=0;
+  int izquierda=0;
+  int maximo=0;
+
+char color;
+char otrocolor;
+
+if(negro==false){color='b';otrocolor='n';}else{color='n'; otrocolor='b';}
+
+
+
+int m=corte;
+
+
+for(;m>=1; ){ 
+    System.out.println("m es "+m);
+    System.out.println("colror "+color);
+       System.out.println("entrada collar"+collar[m-1]);
+    if (collar[m-1]==color || collar[m-1]=='t'){   izquierda=izquierda+1; }
+    else if(collar[m-1]==otrocolor){ System.out.println("me fui"); break;};
+    
+if(m==1 && negro==true) {
+     System.out.println("alla");
+    
+                        for(int j=collar.length; j>=1;j--){ if(collar[j-1]=='n'||collar[j-1]=='t'){izquierda=izquierda+1;}else{j=0;break; };     } 
+ 
+                        }       
+
+if(m==1 && negro==false) {
+    
+     System.out.println("aca");
+                        for(int j=collar.length; j>=1;j--){ if(collar[j-1]=='b' ||collar[j-1]=='t'){izquierda=izquierda+1;}else{j=0; break;};     } 
+ 
+                        }
+
+m--;
+}  
+
+
+
+
+
+    
+    //AHora sumaré los elementos que están del final del string hacia atrás, de ser esto necesario (por ser un collar)
+    
+   
+    
+    
+     suma=izquierda+derecha;
+     r[0]=izquierda;
+     r[1]=derecha;
+     r[2]=suma;
+     r[3]=maximo;
+    return r;
+    };
+    
+    
+    
+    
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+    
+        char[] ch1 ={'b','t','n','n' , 'b','b','b','t','b','t','b','b','b','b','t'};
+        
+      
+        //System.out.println("las perlas a la derecha son "+ puntoDeCorte(ch1)[0] +" las perlas a la izq son "+puntoDeCorte(ch1)[1]);
+
+      
+      System.out.println(puntoDeCorte(ch1)[0]);  
+        
+        
+        
+        
+        
+    }
+    
+}
