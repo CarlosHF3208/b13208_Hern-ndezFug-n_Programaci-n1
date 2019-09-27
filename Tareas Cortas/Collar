@@ -1,12 +1,24 @@
 //Nota: AUN ESTOY TRABAJANDO SOBRE ESTE CÓDIGO, FALTAN UN PAR DE COSAS FUNDAMENTALES PERO QUE SON INMEDIATAS A PARTIR DEL MISMO
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package collar3;
 
 /**
  *
  * @author Carlos
  */
-public class Collar2 {
+public class Collar3 {
+//Nota: AUN ESTOY TRABAJANDO SOBRE ESTE CÓDIGO, FALTAN UN PAR DE COSAS FUNDAMENTALES PERO QUE SON INMEDIATAS A PARTIR DEL MISMO
 
+
+/**
+ *
+ * @author Carlos
+ */
   
     
     
@@ -15,7 +27,7 @@ public class Collar2 {
     int r[]= new int [4];
     r[0]=2;
     r[1]=2;
-    int corte=1;
+    int corte=10;
   
     
    boolean negro=true;
@@ -71,7 +83,7 @@ for(;m>=1; ){
     System.out.println("colror "+color);
        System.out.println("entrada collar"+collar[m-1]);
     if (collar[m-1]==color || collar[m-1]=='t'){   izquierda=izquierda+1; }
-    else if(collar[m-1]==otrocolor){ System.out.println("me fui"); break;};
+    else if(collar[m-1]==otrocolor){ System.out.println(izquierda+"SE FUE"); break;};
     
 if(m==1 && negro==true) {
      System.out.println("alla");
@@ -93,6 +105,48 @@ m--;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+ boolean negro2=true;
+   boolean siga2=true;
+   
+    int k2=0;
+    
+    // primero obtenemos el color del cual sacaremos las bolitas.
+  while(siga2==true){  
+        
+for(;k2<=collar.length-2;)                             {   
+    
+
+if(collar[k2+1]!='t'){
+    
+    
+    if(collar[k2+1]=='b'){negro2=false; siga2=false;k2=collar.length-2;}else if(collar[k2+1]=='n'){ siga2=false; k2=collar.length-2;}else{k2++;}   } //falta caso en que lleguemos a cero y sigan siendo ts
+
+if(k2==collar.length-2 && negro2==true) {
+    
+    
+                        for(int j=0; j<=collar.length-2;j++){ if(collar[j+1]=='n'){negro2=false; siga2=false;};     } 
+ 
+                        }                   
+
+
+k2++;
+
+}
+ 
+
+                                        };
 
     
     //AHora sumaré los elementos que están del final del string hacia atrás, de ser esto necesario (por ser un collar)
@@ -131,3 +185,4 @@ m--;
     }
     
 }
+
