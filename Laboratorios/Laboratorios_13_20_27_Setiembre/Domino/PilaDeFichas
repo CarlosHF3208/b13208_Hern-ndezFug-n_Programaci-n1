@@ -1,0 +1,194 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package domino2;
+
+/**
+ *
+ * @author Carlos
+ */
+public class PilaDeFichas {
+    
+ static int Pila[][]= new int[14][2]; 
+ static int DimPila=0;
+ static int revueltas[][]=new int[28][2];   
+public static int[][] crear() {
+
+   int m=0;
+int fichas[][]= new int[28][2];
+
+for(int i=0;i<=6; i++){    for(int j=0;j<=i; j++){ fichas[m][0]=i; fichas[m][1]=j; m++; };  };
+
+
+return fichas;
+
+
+}    
+
+
+public static void SetDimPila(int c){
+
+DimPila=c;
+
+
+}
+
+public static int GetDimPila(){
+return DimPila;
+
+}
+
+
+public static int[][] GetPila(){
+return Pila;
+
+}
+
+
+public static void SetPila(int c[][]){
+Pila=c;
+
+}
+
+
+public static void Jugador1Come(){
+
+
+Juego2.mano1[Tablero.GetDimMano1()][0]=Pila[DimPila][0];
+Juego2.mano1[Tablero.GetDimMano1()][1]=Pila[DimPila][1];
+Tablero.SetDimMano1(Tablero.GetDimMano1()+1);
+SetDimPila(GetDimPila()+1);
+Juego2.SetFichas1(Juego2.GetFichas1()+1);
+
+
+}
+
+
+
+
+
+
+
+public static void Jugador2Come(){
+
+Juego2.mano2[Tablero.GetDimMano2()][0]=Pila[DimPila][0];
+Juego2.mano2[Tablero.GetDimMano2()][1]=Pila[DimPila][1];
+Tablero.SetDimMano2(Tablero.GetDimMano2()+1);
+SetDimPila(GetDimPila()+1);
+Juego2.SetFichas2(Juego2.GetFichas2()+1);
+
+
+}
+
+
+public static void EliminarPila(){
+    
+    
+    
+    
+    
+}
+
+
+
+
+public static int[][] DevolverFicha(){
+
+int devolver[][]=new int [1][2];
+
+devolver[1][0]=Pila[DimPila][0];
+devolver[1][1]=Pila[DimPila][1];
+DimPila++;
+return devolver;
+}
+    
+
+
+
+
+
+public static void AgregarAPila(int c[][]){
+    
+    
+    Pila[DimPila+1][0]=c[0][0];
+    Pila[DimPila+1][0]=c[0][1];
+    
+    
+    
+}    
+
+ 
+
+
+public static int[][] revolver(int arreglo[][]) {
+
+   
+   
+   
+   for(int p=0;p<=27;p++){
+   int r= (int)(Math.random()*(28-p));
+   revueltas[p][0]=arreglo[r][0];
+   revueltas[p][1]=arreglo[r][1]; 
+   
+   for(int j=r;j<=26 ;j++ ){arreglo[j][0]=arreglo[j+1][0];  arreglo[j][1]=arreglo[j+1][1];    }
+   
+   
+   
+   
+   
+   }
+   
+   
+   return revueltas;
+
+}  
+   
+       
+public static void Pilainicial() {
+
+
+ for(int j=0;j<=13; j++){ Pila[j][0]=Juego2.v1[j+14][0]; Pila[j][1]=Juego2.v1[j+14][1]; };  };
+ 
+
+    
+public static void imprimir (int arreglo[][]){
+
+int m=0;
+
+for(int i=0;i<=6; i++){    for(int j=0;j<=i; j++){ System.out.print("|"+arreglo[m][0] +"|"+ arreglo[m][1]+"| "); m++; };  };
+
+
+}
+    
+
+
+    
+public static void ImprimirPila (){
+
+
+System.out.println(DimPila);
+   for(int j=DimPila;j<14; j++){ System.out.print("|"+Pila[j][0] +"|"+ Pila[j][1]+"| "); };  
+System.out.println();
+
+
+
+};
+
+
+}
+ 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
