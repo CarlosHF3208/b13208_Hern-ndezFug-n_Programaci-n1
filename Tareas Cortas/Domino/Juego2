@@ -1,0 +1,713 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package domino2;
+import java.util.Scanner;
+/**
+ *
+ * @author Carlos
+ */
+public class Juego2 
+{
+
+static int v1[][]=new int[28][2];
+static boolean sejuega=true;
+
+static int fichas1;
+static int fichas2;
+static int mano1[][]=new int[28][2];
+static int mano2[][]=new int[28][2];
+static boolean nosehadecidido=true;
+boolean estado;
+boolean jugar;
+static int Primera[][]=new int [1][2];
+
+
+public Juego2(int v1[][], int mano1[][], int mano2[][], boolean s, boolean j)
+
+{
+this.v1=v1;
+this.mano1=mano1;
+this.mano2=mano2;
+this.estado=s;
+this.jugar=j;
+
+}
+
+
+public static void EliminarPrimera(){
+    
+   boolean a=QuienEmpieza();
+    
+    
+   if(a==true){
+       
+       
+     
+
+for(int i=0; i<=fichas1; i++){
+
+if(mano1[i][0]==Primera[0][0] && mano1[i][1]==Primera[0][1] )
+{
+ 
+ for(int j=i; j<fichas1; j++){   
+    
+    mano1[j][0]=mano1[j+1][0];
+    mano1[j][1]=mano1[j+1][1];  }
+
+
+}  
+       
+ 
+}
+
+fichas1=fichas1-1;
+Tablero.SetDimMano1(Tablero.GetDimMano1()-1);   }
+   
+   
+   
+   
+   
+   
+   
+   
+   if(a==false){
+       
+       
+     
+
+for(int i=0; i<=fichas2; i++){
+
+if(mano2[i][0]==Primera[0][0] && mano2[i][1]==Primera[0][1] )
+{
+ 
+ for(int j=i; j<fichas2; j++){   
+    
+    mano2[j][0]=mano2[j+1][0];
+    mano2[j][1]=mano2[j+1][1];  }
+
+
+}  
+       
+ 
+}
+
+fichas2=fichas2-1;
+Tablero.SetDimMano2(Tablero.GetDimMano2()-1);   }
+   
+   
+   
+   
+   
+   
+}
+
+
+
+
+
+
+public static void TurnoJ1(String Jugador1){
+    
+    
+Scanner sc = new Scanner(System.in);
+      
+System.out.println("Es el turno de " +Jugador1);  
+System.out.println(Jugador1+" puede escoger entre las siguientes fichas para agregar a la derecha ");
+
+
+Tablero.Fichas1PuedeUsar();
+Tablero.ImprimirPuede1derecha();
+
+System.out.println("y las siguientes que puede agregar a la izquierda ");
+ 
+Tablero.Fichas1PuedeUsarIzq();
+Tablero.ImprimirPuede1izquierda();
+
+System.out.println("Digite 1 si quiere agregarla a la derecha, 2 si quiere agregarla a la izquierda");
+int direccion = sc.nextInt();        
+
+if(direccion==1){
+
+System.out.println("Recuerde que las fichas que puede usar son:");
+
+Tablero.ImprimirPuede1derecha();
+
+System.out.println("Oprima un número entro 0 y n-1 de la ficha que quiera agregar");
+
+int escoge1 = sc.nextInt();
+
+if(Tablero.GetElTableroDerecha()==Tablero.GetUsar1Derecha(escoge1)[0]){
+  Tablero.SetTableroDerecha(Tablero.GetUsar1Derecha(escoge1));
+  //Tablero.SetDimd(Tablero.GetDimd()+1);
+  Juego2.EliminarDeMano1(escoge1,1);
+  System.out.println();
+  System.out.println("Su mano pasa a ser");
+  Juego2.imprimirmano1();
+  
+}else{
+
+  Tablero.SetTableroDerecha(Ficha.FichaVuelta(Tablero.GetUsar1Derecha(escoge1)));
+  // Tablero.SetDimd(Tablero.GetDimd()+1);
+  Juego2.EliminarDeMano1(escoge1,1);
+  System.out.println();  System.out.println("Su mano pasa a ser");
+  Juego2.imprimirmano1();
+
+}
+
+System.out.println("El tablero quedó de la siguiente forma:");
+Tablero.ImprimirTablero();
+
+
+  }
+
+
+if(direccion==2){
+
+System.out.println("Recuerde que las fichas que puede usar son:");
+
+Tablero.ImprimirPuede1izquierda();
+
+System.out.println("Oprima un número entro 0 y n-1 de la ficha que quiera agregar");
+
+
+
+int escoge1 = sc.nextInt();
+
+
+
+
+
+if(Tablero.GetElTableroIzquierda()==Tablero.GetUsar1Izquierda(escoge1)[0]){
+  Tablero.SetTableroIzquierda(Tablero.GetUsar1Izquierda(escoge1));
+  //Tablero.SetDimi(Tablero.GetDimi()+1);
+  Juego2.EliminarDeMano1(escoge1,2);
+  System.out.println();  System.out.println("Su mano pasa a ser");
+  Juego2.imprimirmano1();
+  
+}else{
+
+  Tablero.SetTableroIzquierda(Ficha.FichaVuelta(Tablero.GetUsar1Izquierda(escoge1)));
+  //Tablero.SetDimi(Tablero.GetDimi()+1);
+  Juego2.EliminarDeMano1(escoge1,2);
+  System.out.println();   System.out.println("Su mano pasa a ser");
+  Juego2.imprimirmano1();
+
+}
+
+
+
+System.out.println("El tablero quedó de la siguiente forma:");
+Tablero.ImprimirTablero();
+
+
+
+
+
+  }
+
+
+
+
+ 
+
+
+  
+ }
+
+public static void TurnoJ2(String Jugador2){
+    
+        
+      Scanner sc = new Scanner(System.in);
+      
+System.out.println("Es el turno de " +Jugador2);  
+System.out.println(Jugador2+" puede escoger entre las siguientes fichas para agregar a la derecha ");
+
+
+Tablero.Fichas2PuedeUsar();
+Tablero.ImprimirPuede2derecha();
+
+System.out.println("y las siguientes que puede agregar a la izquierda ");
+
+ Tablero.Fichas2PuedeUsarIzq();
+Tablero.ImprimirPuede2izquierda();
+
+System.out.println("Digite 1 si quiere agregarla a la derecha, 2 si quiere agregarla a la izquierda");
+int direccion = sc.nextInt();       
+ 
+
+
+
+if(direccion==1){
+
+System.out.println("Recuerde que las fichas que puede usar son:");
+
+Tablero.ImprimirPuede2derecha();
+
+System.out.println("Oprima un número entro 0 y n-1 de la ficha que quiera agregar");
+
+
+
+int escoge2 = sc.nextInt();
+
+
+
+
+
+if(Tablero.GetElTableroDerecha()==Tablero.GetUsar2Derecha(escoge2)[0]){
+  Tablero.SetTableroDerecha(Tablero.GetUsar2Derecha(escoge2));
+  //Tablero.SetDimd(Tablero.GetDimd()+1);
+  Juego2.EliminarDeMano2(escoge2,1);
+  System.out.println(); System.out.println("La mano ahora pasa a ser");
+  Juego2.imprimirmano2();
+  
+}else{
+
+  Tablero.SetTableroDerecha(Ficha.FichaVuelta(Tablero.GetUsar2Derecha(escoge2)));
+  //Tablero.SetDimd(Tablero.GetDimd()+1);
+  Juego2.EliminarDeMano2(escoge2,1);
+  System.out.println();  System.out.println("La mano ahora pasa a ser");
+  Juego2.imprimirmano2();
+
+}
+
+
+
+
+
+System.out.println("El tablero quedó de la siguiente forma:");
+Tablero.ImprimirTablero();
+
+
+
+  }
+
+
+
+
+
+
+if(direccion==2){
+
+System.out.println("Recuerde que las fichas que puede usar son:");
+
+Tablero.ImprimirPuede2izquierda();
+
+System.out.println("Oprima un número entro 0 y n-1 de la ficha que quiera agregar");
+
+
+
+int escoge2 = sc.nextInt();
+
+
+
+
+
+if(Tablero.GetElTableroIzquierda()==Tablero.GetUsar2Izquierda(escoge2)[0]){
+  Tablero.SetTableroIzquierda(Tablero.GetUsar1Izquierda(escoge2));
+  //Tablero.SetDimi(Tablero.GetDimi()+1);
+  Juego2.EliminarDeMano2(escoge2,2); ///
+  System.out.println();
+  Juego2.imprimirmano2();
+  
+}else{
+
+  Tablero.SetTableroIzquierda(Ficha.FichaVuelta(Tablero.GetUsar2Izquierda(escoge2)));
+  //Tablero.SetDimi(Tablero.GetDimi()+1);
+  Juego2.EliminarDeMano2(escoge2,2);
+  System.out.println();
+  Juego2.imprimirmano2();
+
+}
+
+
+  
+  
+ }
+    
+    
+    
+    
+    
+}
+  
+  
+
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public static void EliminarDeMano1(int c, int d){
+
+if(d==1){
+for(int i=0; i<=fichas1; i++){
+System.out.println(mano1[i][0]+" "+mano1[i][1]+","+Tablero.GetUsar1Derecha(c)[0]+" "+Tablero.GetUsar1Derecha(c)[1]);
+if(mano1[i][0]==Tablero.GetUsar1Derecha(c)[0] && mano1[i][1]==Tablero.GetUsar1Derecha(c)[1] )
+{
+ 
+ for(int j=i; j<fichas1; j++){   
+    
+    mano1[j][0]=mano1[j+1][0];
+    mano1[j][1]=mano1[j+1][1];  }
+
+
+}
+
+
+
+}
+fichas1=fichas1-1;
+Tablero.SetDimMano1(Tablero.GetDimMano1()-1);
+}
+
+
+
+
+
+if(d==2){
+for(int i=0; i<=fichas1; i++){
+
+if(mano1[i][0]==Tablero.GetUsar1Izquierda(c)[0] && mano1[i][1]==Tablero.GetUsar1Izquierda(c)[1] )
+{
+ 
+ for(int j=i; j<fichas1; j++){   
+    
+    mano1[j][0]=mano1[j+1][0];
+    mano1[j][1]=mano1[j+1][1];  }
+
+
+}
+
+
+
+}
+fichas1=fichas1-1;
+Tablero.SetDimMano1(Tablero.GetDimMano1()-1);
+
+
+
+}
+
+
+
+
+
+}
+
+
+
+
+public static void EliminarDeMano2(int c, int d){
+
+if(d==1){
+for(int i=0; i<=fichas2; i++){
+System.out.println(mano2[i][0]+""+mano2[i][1]+","+Tablero.GetUsar2Derecha(c)[0]+" "+Tablero.GetUsar2Derecha(c)[1]);
+if(mano2[i][0]==Tablero.GetUsar2Derecha(c)[0] && mano2[i][1]==Tablero.GetUsar2Derecha(c)[1] )
+{
+ 
+ for(int j=i; j<fichas2; j++){   
+    
+    mano2[j][0]=mano2[j+1][0];
+    mano2[j][1]=mano2[j+1][1];  }
+
+
+}
+
+
+
+}
+fichas2=fichas2-1;
+Tablero.SetDimMano2(Tablero.GetDimMano2()-1);
+
+}
+
+
+
+
+
+
+if(d==2){
+for(int i=0; i<=fichas2; i++){
+
+if(mano2[i][0]==Tablero.GetUsar2Izquierda(c)[0] && mano2[i][1]==Tablero.GetUsar2Izquierda(c)[1] )
+{
+ 
+ for(int j=i; j<fichas2; j++){   
+    
+    mano2[j][0]=mano2[j+1][0];
+    mano2[j][1]=mano2[j+1][1];  }
+
+
+}
+
+
+
+}
+fichas2=fichas2-1;
+Tablero.SetDimMano2(Tablero.GetDimMano2()-1);
+
+}
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public int[][] GetV1()
+{
+return v1;
+}
+public int[][] GetMano1()
+{
+return mano1;
+}
+
+
+public int[][] GetMano2()
+{
+return mano2;
+}
+
+
+public static  void SetMano2(int d[][])
+{
+  mano2=d;
+}
+
+
+
+public int[][] SetMano1()
+{
+return mano2;
+}
+
+
+
+
+public boolean getEstado()
+{
+return estado;
+}
+
+public void setEstado(boolean c)
+{
+estado=c;
+}
+
+public static  void SetFichas1(int b)
+{
+  fichas1=b;
+}
+
+
+
+public static int GetFichas1 ()
+{
+return fichas1;
+}
+
+
+
+
+
+public static  void SetFichas2(int b)
+{
+  fichas2=b;
+}
+
+
+
+public static int GetFichas2 ()
+{
+return fichas2;
+}
+
+
+
+
+
+
+public static  void setV1(int b[][])
+{
+  v1=b;
+}
+
+
+
+public boolean getJugar ()
+{
+return jugar;
+}
+
+public void setJugar (boolean g)
+{
+this.jugar=g;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+    
+public static int[][] manoInicial() {
+
+
+      
+   
+   for (int i=0; i<7; i++){mano1[i][0]=v1[i][0] ;mano1[i][1]=v1[i][1] ;    };
+   
+    SetFichas1(6);
+   
+   return mano1;
+ 
+   }  
+
+
+
+public static int[][] mano2Inicial() {
+
+     for (int i=7; i<14; i++){mano2[i-7][0]=v1[i][0] ;mano2[i-7][1]=v1[i][1] ;     };
+    
+          SetFichas2(6);
+
+    
+   
+ return mano2;
+  
+   }  
+
+
+
+    
+public static void imprimirmano1(){
+
+
+
+
+for(int i=0;i<=fichas1    ; i++){    System.out.print("|"+mano1[i][0] +"|"+ mano1[i][1]+"| ");   };
+
+
+}
+
+
+
+
+
+public static void imprimirmano2(){
+
+
+for(int i=0;i<=fichas2; i++){    System.out.print("|"+mano2[i][0] +"|"+ mano2[i][1]+"| ");   };
+
+}
+
+
+
+public static boolean QuienEmpieza(){
+boolean Jugador1=true;
+boolean todavia=true;
+
+  
+for  (int j=6;j>=0; j--){   
+for(int i=6;i>=0;i--){ if(todavia==true){ if(mano1[i][0]==j && mano1[i][1]==j){nosehadecidido=false; todavia=false; Primera[0][0]=j;Primera[0][1]=j;}; if(mano2[i][0]==j && mano2[i][1]==j){Jugador1=false; nosehadecidido=false; todavia=false;Primera[0][0]=j;Primera[0][1]=j;}; }
+if(j==0){todavia=false;};
+ 
+
+}  
+
+
+
+
+
+
+
+
+}
+
+
+return Jugador1;
+
+}
+
+
+public static int[][]  GetPrimera(){
+
+
+return Primera; 
+
+
+}
+
+
+
+
+
+}
+
+
+
+
+
+ 
+    
+    
+    
+    
