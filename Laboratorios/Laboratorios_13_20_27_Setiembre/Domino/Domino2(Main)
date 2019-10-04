@@ -1,0 +1,153 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package domino2;
+import java.util.Scanner;
+/**
+ *
+ * @author Carlos
+ */
+public class Domino2 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        
+                 Scanner sc = new Scanner(System.in);
+        
+        
+        System.out.println("[ D ][ O ][ M ][ I ][ N ][ O]\n");
+        
+        System.out.println("Bienvenidos al juego de Dominó. El juego está diseñado sólo para dos jugadores");
+        System.out.println();
+   
+     System.out.println("Por favor ingrese el nombre del Jugador 1 seguido de enter");
+     String Jugador1 = sc.nextLine();
+     System.out.println("Por favor ingrese el nombre del Jugador 2 seguido de enter");  
+     String Jugador2 = sc.nextLine(); 
+     System.out.println("Bienvenidos "+ Jugador1 + " y "+ Jugador2 + ". A continuación se repartirán las fichas");
+     
+     
+        PilaDeFichas.imprimir(PilaDeFichas.crear());
+        System.out.println();
+        
+     
+        
+       
+      System.out.println("Lo siguiente es una prueba. Las fichas se revolvieron de la siguiente forma");
+        
+
+     Juego2.setV1(PilaDeFichas.revolver(PilaDeFichas.crear()));
+        
+     PilaDeFichas.imprimir(Juego2.v1);
+     
+    
+       Juego2.manoInicial();
+       
+           System.out.println();
+        System.out.println("Las fichas de "+Jugador1+ " son");
+        Juego2.imprimirmano1();
+     
+        
+        
+    System.out.println();
+    Juego2.mano2Inicial();
+    
+     System.out.println("Las fichas de "+ Jugador2+" son");
+        Juego2.imprimirmano2();
+        
+        
+         System.out.println("La pila de fichas es");
+         
+         
+         PilaDeFichas.Pilainicial();
+         
+         PilaDeFichas.ImprimirPila();
+       
+    System.out.println();
+    
+    System.out.println("La primero ficha que define quien empieza se pondrá sobre la mesa.");
+    
+      
+    
+    if(Juego2.QuienEmpieza()==true){System.out.print("Quien empezó fue "+Jugador1+ " con la ficha ");  Ficha.ImprimirFicha(Juego2.Primera);Tablero.SetDerecha(Juego2.GetPrimera());
+    Tablero.SetIzquierda(Juego2.GetPrimera());
+    System.out.println( "Ahora las fichas de "+Jugador1+ " son"); };
+    if(Juego2.QuienEmpieza()==false){System.out.print("Quien empezó fue "+Jugador2+ "con la ficha ");  Ficha.ImprimirFicha(Juego2.Primera);Tablero.SetDerecha(Juego2.GetPrimera());
+    Tablero.SetIzquierda(Juego2.GetPrimera());
+    };
+ Juego2.EliminarPrimera();
+ System.out.println("Ahora las fichas del jugador 1 son:");
+ Juego2.imprimirmano1();
+
+ System.out.println("Y las del jugador 2 son"); 
+ Juego2.imprimirmano2();
+    
+  System.out.println("Ahora se imprime el tablero:");
+    
+    
+    Tablero.ImprimirTablero();
+  
+  
+  if(Juego2.QuienEmpieza()==false){
+  while(Juego2.sejuega=true){
+      
+  Juego2.TurnoJ1(Jugador1);  
+  Juego2.TurnoJ2(Jugador2);
+ 
+      
+  }
+      
+      
+   
+  }
+
+  
+  if(Juego2.QuienEmpieza()==true){
+  while(Juego2.sejuega=true){
+  
+ Juego2.TurnoJ2(Jugador2);
+ Juego2.TurnoJ1(Jugador1);
+  
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    }
+ 
+    
+
+    
+    
+}
+    
+}
