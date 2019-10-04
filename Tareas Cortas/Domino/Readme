@@ -1,0 +1,14 @@
+Aunque agregar fichas a la derecha y a la izquierda debería de ser un proceso completamente simétrico, agregar fichas a la derecha 
+está libre de errores mientras que agregar fichas a la izquierda suele realizarse a veces de forma errónea por un pequeño error
+que aún no logro identificar. Se recomienda probar todas las capacidades del código agregando SÓLO fichas a la derecha.
+
+
+Intrucciones
+1) Ingrese el nombre de cada jugador de los dos jugadoresseguido de enter.
+2) Automáticamente las fichas se crearán, revolverán y repartirán. Una pila también será creada con las sobrantes.
+3) EL programa verificará quién es el primer jugador y pondrá la primera ficha sobre la mesa, a partir de ese punto,
+los jugadores se turnarán.
+4) Durante cada turno, el programa identificará qué fichas puede el jugador agregar. Por ejemplo, dirá que por la derecha se 
+pueden agregar las fechas [1,2] y [1,3] mientras que por la izquierda se pueden agregar la [6,1] y la [6,3]. Si el jugador por
+ejemplo quiere agregar la ficha [1,2] a la derecha, deberá pulsar 1 para indicar que quiere agregar a la derecha, seguido de
+0 para indicar que selecciona la ficha inicial.
