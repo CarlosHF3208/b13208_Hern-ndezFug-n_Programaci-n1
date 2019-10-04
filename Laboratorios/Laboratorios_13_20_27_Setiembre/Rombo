@@ -1,0 +1,62 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package rombo;
+import java.util.Scanner;
+/**
+ *
+ * @author Carlos
+ */
+public class Rombo {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        
+        
+                Scanner sc = new Scanner(System.in);
+             
+ System.out.println("Digite un número impar:");  
+ double x = sc.nextDouble();
+
+ if(x%2==0) { System.out.println("No se puede hacer un rombo con esas características. Digite un número impar.");}
+        
+ 
+ else if(x%2!=0){
+     
+     for(int i=0 ; i<=x; i=i+2)
+     
+     {  for(int s=0;s<(x-1)/2 -i/2  ;s=s+1){ System.out.print(" ");}
+        for(int a=1; a<=i+1;a=a+1) { System.out.print("*");} System.out.println();}   
+     
+     
+      for(int i=2 ; i<=x; i=i+2)
+     
+     {  for(int a=1; a<=i/2   ;a=a+1) { System.out.print(" ");}
+         for(int s=1;s<=x-i;s=s+1) { System.out.print("*");}
+         System.out.println();   }  
+ 
+ 
+ }
+                                                                         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }
+    
+}
