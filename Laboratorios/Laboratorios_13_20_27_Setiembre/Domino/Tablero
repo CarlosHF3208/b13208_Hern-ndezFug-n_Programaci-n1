@@ -1,0 +1,577 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package domino2;
+
+/**
+ *
+ * @author Carlos
+ */
+    public class Tablero {
+        
+        
+    static int Primera[][]=new int [1][2];
+    static int ElTableroDerecha[][]=new int [28][2];
+    static int ElTableroIzquierda[][]=new int [28][2];
+    static int Dimd=0;
+    static int Dimi=0;
+    static int estaspuedederecha1[][]=new int[28][2];
+    static int estaspuedeizquierda1[][]=new int[28][2];
+    static int estaspuedederecha2[][]=new int[28][2];
+    static int estaspuedeizquierda2[][]=new int[28][2];
+    static int puedederecha1=0;
+    static int puedeizquierda1=0;
+   static int puedederecha2=0;
+   static int puedeizquierda2=0;
+   static int DimMano1=7;
+   static int DimMano2=7;
+   static boolean nofichaizq1=false;
+   static boolean nofichader1=false;
+    static boolean nofichaizq2=false;
+   static boolean nofichader2=false;
+   
+      
+   
+   
+   
+   
+   
+   
+   public static int GetElTableroDerecha(){
+   
+   return ElTableroDerecha[Dimd-1][1];
+   
+   
+   
+   }
+   
+   
+   
+   
+   
+   public static int GetElTableroIzquierda(){
+   
+   return ElTableroDerecha[Dimi-1][1];
+   
+   
+   
+   }
+   
+   
+   
+   
+   public static int GetDimd(){
+   
+  return Dimd;
+   
+   
+   }
+   
+   
+    
+    
+   public static int GetDimi(){
+   
+  return Dimi;
+   
+   
+   }
+   
+   
+   public static void SetDimd(int c){
+   
+   Dimd=c;
+   
+   
+   }
+   
+   
+    
+   public static void SetDimi(int c){
+   
+   Dimi=c;
+   
+   
+   }
+   
+   
+
+public static int[] GetUsar1Derecha (int d){
+  
+    int f[]=new int[2];
+  f[0]=estaspuedederecha1[d][0];
+   f[1]=estaspuedederecha1[d][1];
+     return f;
+}
+   
+
+   
+
+
+ 
+
+
+
+
+public static int[] GetUsar1Izquierda (int d){
+ 
+    int f[]=new int[2];
+  f[0]=estaspuedeizquierda1[d][0];
+   f[1]=estaspuedeizquierda1[d][1];
+     return f;
+}
+   
+
+public static int[] GetUsar2Derecha (int d){
+  
+    int f[]=new int[2];
+  f[0]=estaspuedederecha2[d][0];
+   f[1]=estaspuedederecha2[d][1];
+     return f;
+}
+   
+
+
+public static int[] GetUsar2Izquierda (int d){
+   
+    int f[]=new int[2];
+  f[0]=estaspuedeizquierda2[d][0];
+   f[1]=estaspuedeizquierda2[d][1];
+     return f;
+}
+   
+
+   
+
+
+   
+   
+   public static void SetTableroDerecha(int c[])
+   {
+    ElTableroDerecha[Dimd][0]=c[0];   
+    ElTableroDerecha[Dimd][1]=c[1];  
+    Dimd=Dimd+1;   
+       
+   }
+   
+   
+   
+    public static void SetTableroIzquierda(int c[])
+   {
+    ElTableroIzquierda[Dimi][0]=c[0];   
+    ElTableroIzquierda[Dimi][1]=c[1];  
+    Dimi=Dimi+1;   
+       
+   }
+   
+   
+
+
+
+public static int GetDimMano2()
+{
+   return  DimMano2;
+
+}
+
+
+
+public static int GetDimMano1()
+{
+   return  DimMano1;
+
+}
+
+
+public static void SetDimMano2(int c)
+{
+    DimMano2=c;
+
+}
+
+
+
+public static void SetDimMano1(int c)
+{
+    DimMano1=c;
+
+}
+
+
+
+
+
+   
+public static void Primera(int c[][])
+{
+Primera=c;
+}
+
+
+
+
+
+
+
+public static int[][] GetEstaspuedederecha()
+{
+   return  estaspuedederecha1;
+
+}
+
+
+
+
+public static int GetPuedederecha1()
+{
+   return  puedederecha1;
+
+}
+
+
+public static void SetPuedederecha1(int c)
+{
+   puedederecha1=c;
+
+}
+public static void SetPuedederecha2(int c)
+{
+   puedederecha2=c;
+
+}
+
+
+
+
+public static int GetPuedeizquierda1()
+{
+   return  puedeizquierda1;
+
+}
+
+
+
+
+
+public static int GetPuedederecha2()
+{
+   return  puedederecha1;
+
+}
+
+
+
+
+
+
+public static int GetPuedeizquierda2()
+{
+   return  puedeizquierda2;
+
+}
+
+
+
+
+
+
+public static int[][] GetEstaspuedeizquierda2()
+{
+   return  estaspuedeizquierda2;
+
+}
+    
+
+
+public static void SetDerecha(int c[][])
+{
+   
+ElTableroDerecha[Dimd][0]=c[0][0];
+ElTableroDerecha[Dimd][1]=c[0][1];
+Dimd=Dimd+1; 
+
+
+
+}
+
+public static void SetIzquierda(int c[][])
+{
+          
+ElTableroIzquierda[Dimi][0]=c[0][0];
+ElTableroIzquierda[Dimi][1]=c[0][1];
+Dimi=Dimi+1;
+}
+
+
+
+public static void ImprimirTablero()
+
+{
+for(int i=Dimi-1; i>0; i--){    
+System.out.print("|"+ElTableroIzquierda[i][1]+"|"+ElTableroIzquierda[i][0]+ "| ");   }
+
+
+
+
+for(int i=0; i<Dimd; i++){    
+System.out.print("|"+ElTableroDerecha[i][0]+"|"+ElTableroDerecha[i][1]+ "| ");     }
+
+}
+
+
+
+
+
+
+
+public static void Fichas1PuedeUsar()
+{
+  nofichader1=false;
+  puedederecha1=0;
+   
+        
+for(int i=0; i<DimMano1; i++){ if( ElTableroDerecha[Dimd-1][1]==Juego2.mano1[i][1] ||ElTableroDerecha[Dimd-1][1]==Juego2.mano1[i][0]){estaspuedederecha1[puedederecha1][0]=Juego2.mano1[i][0]; estaspuedederecha1[puedederecha1][1]=Juego2.mano1[i][1];puedederecha1=puedederecha1+1;     } 
+
+  }; 
+
+if(puedederecha1==0){nofichader1=true;}
+  
+  
+}
+
+
+
+
+public static void Fichas1PuedeUsarIzq()
+{
+  nofichaizq1=false;
+  puedeizquierda1=0;
+   
+    
+        
+        
+for(int i=0; i<DimMano1; i++){ if( ElTableroIzquierda[Dimi-1][1]==Juego2.mano1[i][1] ||ElTableroIzquierda[Dimi-1][1]==Juego2.mano1[i][0]  )
+{estaspuedeizquierda1[puedeizquierda1][0]=Juego2.mano1[i][0]; estaspuedeizquierda1[puedeizquierda1][1]=Juego2.mano1[i][1];puedeizquierda1=puedeizquierda1+1; } 
+
+  };
+  if(puedeizquierda1==0){nofichaizq1=true;}
+ 
+  
+  }
+
+
+public  static boolean GetNoFichaDerecha1(){
+       
+       
+       return  nofichader1;
+       
+   }
+   
+   
+   
+     public static boolean GetNoFichaIzquierda1(){
+       
+       
+       return  nofichaizq1;
+       
+   }
+   
+   
+     
+       public static boolean GetNoFichaDerecha2(){
+       
+       
+       return  nofichader2;
+       
+   }
+   
+   
+         public static boolean GetNoFichaIzquierda2(){
+       
+       
+       return  nofichaizq2;
+       
+   }
+   
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public static void Fichas2PuedeUsar()
+{
+    nofichader2=false;
+  puedederecha2=0;
+ 
+   
+     
+
+for(int i=0; i<DimMano2; i++){ if( ElTableroDerecha[Dimd-1][1]==Juego2.mano2[i][1] ||ElTableroDerecha[Dimd-1][1]==Juego2.mano2[i][0]  ){estaspuedederecha2[puedederecha2][0]=Juego2.mano2[i][0]; estaspuedederecha2[puedederecha2][1]=Juego2.mano2[i][1];puedederecha2=puedederecha2+1;     } 
+
+  };
+  
+  if(  puedederecha2==0  ){nofichaizq1=true;} ;
+  
+       }   
+
+
+
+
+public static void Fichas2PuedeUsarIzq()
+{
+    nofichaizq2=false;
+
+  puedeizquierda2=0;
+   
+    
+        
+        
+for(int i=0; i<DimMano2; i++){ if( ElTableroIzquierda[Dimi-1][1]==Juego2.mano2[i][1] ||ElTableroIzquierda[Dimi-1][1]==Juego2.mano2[i][0]  )
+{estaspuedeizquierda2[puedeizquierda2][0]=Juego2.mano2[i][0]; estaspuedeizquierda2[puedeizquierda2][1]=Juego2.mano2[i][1];puedeizquierda2++; } 
+
+  };
+  
+  
+if(  puedeizquierda2==0  ){nofichaizq1=true;} ;
+  
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public static void ImprimirPuede1derecha(){
+
+           
+    
+if(puedederecha1>0 && PilaDeFichas.GetDimPila()<14){
+for(int j=0;j<puedederecha1; j++){ System.out.print("|"+estaspuedederecha1[j][0] +"|"+ estaspuedederecha1[j][1]+"| "); }; 
+
+if(puedederecha1==0){
+    
+   
+System.out.println("No existen fichas que pueda usar, debe de comer");System.out.println("El jugador 1 saca la Ficha |" + PilaDeFichas.GetPila()[PilaDeFichas.GetDimPila()][0]+"|" +PilaDeFichas.GetPila()[PilaDeFichas.GetDimPila()][1]+"| de la Pila de Fichas");
+PilaDeFichas.Jugador1Come();
+System.out.println();
+Juego2.imprimirmano1();
+ System.out.println("Pila");
+ PilaDeFichas.ImprimirPila();
+ ImprimirPuede1derecha();
+}
+
+}
+
+
+}
+
+
+
+
+
+
+public static void ImprimirPuede1izquierda()
+{
+    
+if(puedeizquierda1>0 && PilaDeFichas.GetDimPila()<14){
+for(int j=0;j<puedeizquierda1; j++){ System.out.print("|"+estaspuedeizquierda1[j][0] +"|"+ estaspuedeizquierda1[j][1]+"| "); }; 
+
+
+}
+
+
+}
+
+
+
+
+
+public static void ImprimirPuede2derecha()
+{
+    
+ 
+if(puedederecha2>0 && PilaDeFichas.GetDimPila()<14){
+for(int j=0;j<puedederecha2; j++){ System.out.print("|"+estaspuedederecha2[j][0] +"|"+ estaspuedederecha2[j][1]+"| "); }; 
+
+
+
+if(puedederecha2==0){
+System.out.println("No existen fichas que pueda usar, debe de comer");
+System.out.println("El jugador 2 saca la Ficha |" + PilaDeFichas.GetPila()[PilaDeFichas.GetDimPila()][0]+"|" +PilaDeFichas.GetPila()[PilaDeFichas.GetDimPila()][1]+"| de la Pila de Fichas");
+PilaDeFichas.Jugador2Come();
+System.out.println();
+Juego2.imprimirmano2();
+System.out.println("Pila");
+PilaDeFichas.ImprimirPila();
+ImprimirPuede2derecha();
+}
+
+
+}
+
+
+}
+
+
+
+
+
+public static void ImprimirPuede2izquierda()
+{
+    
+if(puedeizquierda2>0 && PilaDeFichas.GetDimPila()<14){
+for(int j=0;j<puedeizquierda2; j++){ System.out.print("|"+estaspuedeizquierda2[j][0] +"|"+ estaspuedeizquierda2[j][1]+"| "); }; 
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
