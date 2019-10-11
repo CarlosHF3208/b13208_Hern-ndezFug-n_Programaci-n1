@@ -1,1 +1,12 @@
-
+    public static int tiros1;
+    public static int tiros2;
+    public static int conteojugador1=0;
+    public static int conteojugador2=0; 
+    public static boolean ElGanadorEs1; 
+    public static int CantidadSets1gana=0;
+    public static int CantidadSets2Gana;
+    public static int Puntaje1MuerteS_bita;
+    public static int Puntaje2MuerteS_ubita;
+    
+    
+    
