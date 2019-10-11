@@ -1,12 +1,17 @@
-package juez;
+
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
 
 public class Juez {
-
-    public static int tiros1;
-    public static int tiros2;
-    public static int conteojugador1=0;
-    public static int conteojugador2=0; 
+    
+    
+    public static int Tiros1;
+    public static int Tiros2;
+    public static int ConteoJugador1=0;
+    public static int ConteoJugador2=0; 
     public static boolean ElGanadorEs1; 
     public static int CantidadSets1gana=0;
     public static int CantidadSets2Gana;
@@ -15,9 +20,41 @@ public class Juez {
     
     
     
-    public static void main(String[] args) {
-        // TODO code application logic here
+   
+    
+    public static void SetTiros1(int d){
+    Tiros1=d;    
+        
     }
     
+
+public static void SetTiros2(int d){
+    Tiros2=d;    
+        
+    }
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+    }
   
