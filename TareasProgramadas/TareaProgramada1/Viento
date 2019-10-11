@@ -1,0 +1,94 @@
+
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package arquer_a;
+
+
+public class Viento {
+    
+    
+    
+    
+    static int NivelViento; 
+    
+    
+    
+    
+    public static int GenerarNivelViento()
+    {
+        
+     return (int)(Math.random()*2);   
+        
+               
+    }
+    
+    
+    
+    public static void SetNivelViento(int c)
+    {
+    
+        NivelViento=c;
+    
+    
+    }
+    
+    // A continucación se generará un r dependiendo del nivel del viento. Recordar que el viento varía de un tiro a otro.
+    public static int r (int nivelv){
+        int r=0;
+        
+     if ( nivelv==0){   
+    r=(int)(Math.random())/5;    
+        
+        
+    }
+    
+    
+     if ( nivelv==1){   
+    r=(int)(Math.random())/2;    
+        
+        
+    }
+     
+     
+     
+      if ( nivelv==2){   
+    r=(int)(Math.random());    
+        
+        
+    }
+    return r;
+                             }
+    
+    
+    
+    
+    
+    
+    public static double GenerarDirecci_on(){
+   double zeta= ((int)(Math.random()*2))*Math.PI;
+    
+    return zeta;
+    
+    }
+    
+    
+    
+    
+     public static double[] TiroConViento(int d[], int direcci_n, int intensidad){
+  
+     double devolver[]=new double [2];
+     
+     devolver[0]=d[0]+intensidad*Math.cos(direcci_n);
+     devolver[1]=d[1]+intensidad*Math.sin(direcci_n);
+    
+     
+     return devolver;
+    };
+    
+    
+    
+    
+    
+}    //Cierra la clase
