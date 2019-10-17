@@ -1,0 +1,70 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package examen1_b13208;
+import java.util.Scanner;
+/**
+ *
+ * @author Carlos
+ */
+public class Examen1_b13208 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        
+        
+        Scanner sc= new Scanner (System.in);
+        
+        System.out.println("Bienvenido al juego de busca 13");
+        
+        
+        System.out.println("Por favor, digite el nombre del jugador 1");
+        
+        String Jugador1=sc.nextLine();
+        
+        System.out.println("Por favor, digite el nombre del jugador 2");
+        
+        String Jugador2=sc.nextLine();
+        
+        
+        System.out.println("Por favor, digite un número entre el 12 y el 16 (inclusive) para definir la dimensión del tablero ");
+        
+         int dimension =sc.nextInt();
+         
+         
+         if( dimension>16 || dimension <12){
+         
+         while(dimension>16 || dimension <12 ){
+             
+             
+           System.out.println("Por favor, digite un número que sea válido entre el 12 y el 16 (inclusive)  ");
+        
+          dimension =sc.nextInt();   
+             
+         }
+             
+             
+         }
+         
+         Juego.Juego(Jugador1, Jugador2, dimension);
+         
+         
+         
+         System.out.println();
+         System.out.println("A continuación se imprime el tablero:");
+         
+         Juego.ImprimirTablero();
+       Juego.ContarPuntaje();
+        Juego.ImprimirPuntajes();
+         
+         
+         
+         }
+        
+        
+        
+    }
