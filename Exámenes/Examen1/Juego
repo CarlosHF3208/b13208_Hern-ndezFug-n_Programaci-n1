@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package examen1_b13208;
 
 public class Juego {
@@ -142,7 +146,7 @@ public static void ContarPuntaje(){ // ESTÁ LISTO Y PROBADO
     
     for(int ñ=0; ñ<LaDimension; ñ++){
         
-        if(Tablero[ñ][2]=="a1"||Tablero[ñ][2]=="a2"||Tablero[ñ][2]=="a3")//En este algoritmo había un error 
+        if("a1".equals(Tablero[ñ][2])||"a2".equals(Tablero[ñ][2])||"a3".equals(Tablero[ñ][2]))//En este algoritmo había un error 
         {
             
         PuntajeJ1=PuntajeJ1+(int)Tablero[ñ][1].charAt( 0 )- '0';       //Había que usar ésto!
@@ -150,7 +154,7 @@ public static void ContarPuntaje(){ // ESTÁ LISTO Y PROBADO
         }
         
         
-         if(Tablero[ñ][2]=="b1"||Tablero[ñ][2]=="b2"||Tablero[ñ][2]=="b3")
+         if("b1".equals(Tablero[ñ][2])||"b2".equals(Tablero[ñ][2])||"b3".equals(Tablero[ñ][2]))
         {
             
         PuntajeJ2=PuntajeJ2+(int)Tablero[ñ][1].charAt( 0 )- '0';       //Había que usar ésto!
@@ -164,26 +168,26 @@ public static void ContarPuntaje(){ // ESTÁ LISTO Y PROBADO
     
           //Lo siguiente es para contemplar la modificación de color.
           
-          //sE PODRÍA CAMBIAR LA COMPARACIÓN DE STRINGS AL COMANDO QUE ES DE STRINGS
+          //CAMBIÉ == POR .EQUALS PUES NETBEANS ME LO SUGERÍA.
           
           for (int q=0; q<LaDimension; q++){
-              if(Tablero[q][0]=="v"){
+              if("v".equals(Tablero[q][0])){
               
-                  if(Tablero[q][2]=="a1"||Tablero[q][2]=="a2"||Tablero[q][2]=="a3"){
+                  if("a1".equals(Tablero[q][2])||"a2".equals(Tablero[q][2])||"a3".equals(Tablero[q][2])){
                   PuntajeJ1=PuntajeJ1*2; }
               
               
-                if(Tablero[q][2]=="b1"||Tablero[q][2]=="b2"||Tablero[q][2]=="b3"){
+                if("b1".equals(Tablero[q][2])||"b2".equals(Tablero[q][2])||"b3".equals(Tablero[q][2])){
                   PuntajeJ2=PuntajeJ2*2; }
                                     }
               
-              if(Tablero[q][0]=="r"){
+              if("r".equals(Tablero[q][0])){
               
-                  if(Tablero[q][2]=="a1"||Tablero[q][2]=="a2"||Tablero[q][2]=="a3"){
+                  if("a1".equals(Tablero[q][2])||"a2".equals(Tablero[q][2])||"a3".equals(Tablero[q][2])){
                   PuntajeJ1=PuntajeJ1-1; }
               
               
-                if(Tablero[q][2]=="b1"||Tablero[q][2]=="b2"||Tablero[q][2]=="b3"){
+                if("b1".equals(Tablero[q][2])||"b2".equals(Tablero[q][2])||"b3".equals(Tablero[q][2])){
                   PuntajeJ2=PuntajeJ2-1; }
                   
               }
