@@ -57,14 +57,152 @@ public class Examen1_b13208 {
          System.out.println();
          System.out.println("A continuación se imprime el tablero:");
          
-         Juego.ImprimirTablero();
+       Juego.ImprimirTablero();
        Juego.ContarPuntaje();
-        Juego.ImprimirPuntajes();
+       System.out.println();
+       Juego.ImprimirPuntajes();
          
+        
+        
+          System.out.println();
+
+          
+ while(Juego.PuntajeJ1!=13 || Juego.PuntajeJ2!=13){         
+          
+          
+          
+System.out.println("Es el turno del Jugador 1. Por favor digite a1, a2 o a3 para tomar una ficha");
+
+String ficha1=sc.next();
+
+if( !"a1".equals(ficha1) && !"a2".equals(ficha1) && !"a3".equals(ficha1)){
+        
+
+while(  !"a1".equals(ficha1) && !"a2".equals(ficha1) && !"a3".equals(ficha1) ){
+                  
+ System.out.println("Por favor digite a1, a2 o a3 para tomar una ficha)"); //Le agregué esto porque de lo contratio J1 podría mover fichas 2
+ ficha1=sc.next();   
          
+}
+}
+    
+ System.out.println("Por favor digite un número del 1 al "+ dimension+ " para saleccionar la casilla en la que moverá la ficha");  
+
+int casilla1  =sc.nextInt(); 
+
+
+
+
+while( casilla1<1 || casilla1>dimension ){
+                  
+ System.out.println("Comando no válido, por favor digite un número del 1 al "+ dimension+ " para saleccionar la casilla en la que moverá la ficha"); //Le agregué esto porque de lo contratio J1 podría mover fichas 2
+ casilla1  =sc.nextInt();   
          
-         }
+
+}
+
+Juego.J1Mueve(ficha1, casilla1);
+
+
+while( Juego.GetIntenteDeNuevo1()==true){
+
+System.out.println("La casilla que seleccionó está ocupada, por favor digite otro número entre 1 y "+ dimension);  
+casilla1  =sc.nextInt(); 
+Juego.J1Mueve(ficha1, casilla1);
+
+}
+
+
+
+ System.out.println();
+ Juego.ImprimirTablero();
+ System.out.println();
+ Juego.ContarPuntaje();
+ Juego.ImprimirPuntajes();
+ 
+ 
+ 
+ 
+ //A partir de acá es el turno de 2
+ 
+ 
+ 
+ 
+         
+System.out.println("Es el turno del Jugador 2. Por favor digite b1, b2 o b3 para tomar una ficha");
+
+String ficha2=sc.next();
+
+if( !"b1".equals(ficha2) && !"b2".equals(ficha2) && !"b3".equals(ficha2)){
+        
+
+while(  !"b1".equals(ficha2) && !"b2".equals(ficha2) && !"b3".equals(ficha2) ){
+                  
+ System.out.println("Por favor digite b1, b2 o b3 para tomar una ficha, otras entradas no son válidas"); //Le agregué esto porque de lo contratio J1 podría mover fichas 2
+ ficha2=sc.next();   
+         
+}
+}
+    
+ System.out.println("Por favor digite un número del 1 al "+ dimension+ " para saleccionar la casilla en la que moverá la ficha");  
+
+int casilla2  =sc.nextInt(); 
+
+
+
+
+while( casilla2<1 || casilla2>dimension ){
+                  
+ System.out.println("Comando no válido, por favor digite un número del 1 al "+ dimension+ " para saleccionar la casilla en la que moverá la ficha"); //Le agregué esto porque de lo contratio J1 podría mover fichas 2
+ casilla2  =sc.nextInt();   
+         
+
+}
+
+Juego.J2Mueve(ficha2, casilla2);
+
+
+while( Juego.GetIntenteDeNuevo2()==true){
+
+System.out.println("La casilla que seleccionó está ocupada, por favor digite otro número entre 1 y "+ dimension);  
+casilla2  =sc.nextInt(); 
+Juego.J2Mueve(ficha2, casilla2);
+
+}
+
+
+
+ System.out.println();
+ Juego.ImprimirTablero();
+ System.out.println();
+ Juego.ContarPuntaje();
+ Juego.ImprimirPuntajes();
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ } //El while
+    
+ if(Juego.GetPuntajeJ1()==13){System.out.println("El ganador es " + Jugador1 +" ¡Felicidades!");}
+else{System.out.println("El ganador es " + Jugador2 +" ¡Felicidades!");}
+ 
+ 
+ 
+ 
+    }//acá termina main
+
+
+
+
+
+}//termina clase del main
         
         
         
-    }
+  
+    
+
