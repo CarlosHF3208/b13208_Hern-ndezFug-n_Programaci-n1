@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package examen1_b13208;
 
 public class Juego {
@@ -138,7 +134,7 @@ public class Juego {
 
 
 
-public static void ContarPuntaje(){
+public static void ContarPuntaje(){ // ESTÁ LISTO Y PROBADO
     PuntajeJ1=0;
     PuntajeJ2=0;
  
@@ -161,18 +157,47 @@ public static void ContarPuntaje(){
             
     
         }
+         
+                                       }
     
+
     
-    
-    
-        }
-    
-}
-        
-        
-        
-        
-                                    
+          //Lo siguiente es para contemplar la modificación de color.
+          
+          //sE PODRÍA CAMBIAR LA COMPARACIÓN DE STRINGS AL COMANDO QUE ES DE STRINGS
+          
+          for (int q=0; q<LaDimension; q++){
+              if(Tablero[q][0]=="v"){
+              
+                  if(Tablero[q][2]=="a1"||Tablero[q][2]=="a2"||Tablero[q][2]=="a3"){
+                  PuntajeJ1=PuntajeJ1*2; }
+              
+              
+                if(Tablero[q][2]=="b1"||Tablero[q][2]=="b2"||Tablero[q][2]=="b3"){
+                  PuntajeJ2=PuntajeJ2*2; }
+                                    }
+              
+              if(Tablero[q][0]=="r"){
+              
+                  if(Tablero[q][2]=="a1"||Tablero[q][2]=="a2"||Tablero[q][2]=="a3"){
+                  PuntajeJ1=PuntajeJ1-1; }
+              
+              
+                if(Tablero[q][2]=="b1"||Tablero[q][2]=="b2"||Tablero[q][2]=="b3"){
+                  PuntajeJ2=PuntajeJ2-1; }
+                  
+              }
+              
+              
+              
+                                        }
+          
+
+
+
+                             }   // Acá termina el conteo de puntos
+
+
 
 
 
@@ -187,6 +212,27 @@ System.out.println("El puntaje del Jugador 1 es "+PuntajeJ1+" y el puntaje del J
 
 
 
+
+public static int GetPuntajeJ1(){
+
+
+return PuntajeJ1;
+
+
+
+}
+
+
+
+
+public static int GetPuntajeJ2(){
+
+
+return PuntajeJ2;
+
+
+
+}
 
 
 
