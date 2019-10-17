@@ -240,7 +240,97 @@ return PuntajeJ2;
 
 
 
+public static void SetIntenteDeNuevo1(boolean d){
 
+
+IntenteDeNuevo1=d;
+
+
+
+}
+
+
+public static void SetIntenteDeNuevo2(boolean d){
+
+
+IntenteDeNuevo2=d;
+
+
+
+}
+
+
+
+
+public static boolean GetIntenteDeNuevo1(){
+
+
+return IntenteDeNuevo1;
+
+
+
+}
+
+
+public static boolean GetIntenteDeNuevo2(){
+
+
+return IntenteDeNuevo2;
+
+
+
+}
+
+
+
+
+
+
+
+
+public static boolean J1Mueve(String c, int d){
+   
+    
+    if (" ".equals(Tablero[d-1][2])){
+        
+        for(int p=0; p<LaDimension; p++){
+        
+        if(Tablero[p][2].equals(c)){Tablero[p][2]=" "; System.out.println("Logrado");} //Ojo...acá es relevante usar el equals en vez del ==.
+    
+        
+        
+        
+    }
+      Tablero[d-1][2]=c;  
+      IntenteDeNuevo1=false;
+        
+    }else {System.out.println("Jugada No válida, por favor intente de nuevo"); IntenteDeNuevo1=true;}
+        ;
+    
+  return IntenteDeNuevo1;  
+}
+
+
+
+public static boolean J2Mueve(String c, int d){
+   
+    
+    if (" ".equals(Tablero[d-1][2])){
+        
+        for(int p=0; p<LaDimension; p++){
+        
+        if(Tablero[p][2].equals(c)){Tablero[p][2]=" ";}
+    
+       
+    }
+      Tablero[d-1][2]=c;  
+      IntenteDeNuevo2=false;
+        
+    }else {System.out.println("Jugada No válida, por favor intente de nuevo"); IntenteDeNuevo2=true;}
+        
+    
+  return IntenteDeNuevo2;  
+}
 
 
 
