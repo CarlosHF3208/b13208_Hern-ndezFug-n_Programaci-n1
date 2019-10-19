@@ -71,7 +71,7 @@ public class Examen1_b13208 {
           
           
           
-System.out.println("Es el turno del Jugador 1. Por favor digite a1, a2 o a3 para tomar una ficha");
+System.out.println("Es el turno de "+ Jugador1 + ". Por favor digite a1, a2 o a3 para tomar una ficha");
 
 String ficha1=sc.next();
 
@@ -129,7 +129,7 @@ Juego.J1Mueve(ficha1, casilla1);
  
  
          
-System.out.println("Es el turno del Jugador 2. Por favor digite b1, b2 o b3 para tomar una ficha");
+System.out.println("Es el turno de "+ Jugador2 +". Por favor digite b1, b2 o b3 para tomar una ficha");
 
 String ficha2=sc.next();
 
@@ -188,7 +188,7 @@ Juego.J2Mueve(ficha2, casilla2);
  } //El while
     
  if(Juego.GetPuntajeJ1()==13){System.out.println("El ganador es " + Jugador1 +" ¡Felicidades!");}
-else{System.out.println("El ganador es " + Jugador2 +" ¡Felicidades!");}
+else{System.out.println("El ganador es de " + Jugador2 +" ¡Felicidades!");}
  
  
  
@@ -205,4 +205,5 @@ else{System.out.println("El ganador es " + Jugador2 +" ¡Felicidades!");}
         
   
     
+
 
