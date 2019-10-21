@@ -1,0 +1,100 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package arquer_a;
+
+/**
+ *
+ * @author Carlos
+ */
+public class Viento {
+    
+    
+    
+    
+    static int NivelViento; 
+    public static double zeta;
+    public static double r;
+    
+    
+    public static int GenerarNivelViento()
+    {
+        
+     return (int)(Math.random()*2);   
+        
+               
+    }
+    
+    
+    
+    public static void SetNivelViento()
+    {
+    
+        NivelViento=GenerarNivelViento();
+    
+     
+    }
+    
+    // A continucación se generará un r dependiendo del nivel del viento. Recordar que el viento varía de un tiro a otro.
+    public static void GenerarIntensidad(){
+        
+        SetNivelViento();
+        
+     if ( NivelViento==0){   
+        
+      double r1= Math.round(Math.random()*100);
+       r=r1/500;   
+      
+    }
+    
+    
+     if ( NivelViento==1){   
+   double r1= Math.round(Math.random()*100);
+       r=r1/200;
+    }
+     
+     
+     
+      if ( NivelViento==2){   
+   double r1= Math.round(Math.random()*100);
+       r=r1/100; 
+    }
+ 
+                             }
+    
+    
+    
+    
+    
+    
+    public static void GenerarDirecci_on(){
+   double zeta1= Math.random()*2*100*3.14;
+   double zeta2=Math.round(zeta1);
+   zeta=zeta2/100;
+    }
+    
+    
+    
+    
+     public static double[] TiroConViento(double d[]){
+  System.out.println("r es "+ r+" zeta es "+ zeta);
+     double devolver[]=new double [2];
+     
+     devolver[0]=d[0]+r*Math.cos(zeta);
+     devolver[1]=d[1]+r*Math.sin(zeta);
+    
+   devolver[0]=Math.round(devolver[0]*100);
+   devolver[0]=devolver[0]/100;
+   devolver[1]=Math.round(devolver[1]*100);
+   devolver[1]=devolver[1]/100; //Si no hago esto último a veces suceden cosas raras con los decimales. 
+     
+     return devolver;
+    };
+    
+    
+    
+    
+    
+}    //Cierra la clase
