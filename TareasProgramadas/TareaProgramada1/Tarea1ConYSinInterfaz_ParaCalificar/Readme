@@ -1,0 +1,11 @@
+*Al inicio el programa le preguntará si quiere correr el código con ventanas (digitar 1 de ser así) o sin ventanas (digitar 2). 
+*Si se corre el cósigo en Netbeans, por ejemplo, tener cuidado con que puede ser necesario minimizar la ventana de dicho software 
+para encontrar la ventana de Arquer_a. El código fue probado y no debería presentar problemas (demasiado evidentes)
+para desplegar las ventanas.
+*Hay diferencias importantes entre cómo funciona éste código con ventanas y sin ellas, por lo que de existir un error con ventanas 
+no necesariamente este persiste sin ventanas (y viceversa).
+*Si bien el código fue programado de forma que obligue al usuario corregir un input erróneo en algunos escenarios,se recomienda
+evitar ingresar inputs erróneos y seguir al pie de la letra las indicaciones que aparezcan en pantalla.
+*Cancelar cualquier ventana equivale a cerrar el programa del todo(No se le encontró sentido añadir un botón para propiamente 
+cancelar una acción pues no se pidió algo así, y de ser necesario por ejemplo anular un cambio en
+la cantidad de sets o lanzamientos-por ejemplo-puede simplemente entrar de nuevo a la sección correspondiente desde el menú).
