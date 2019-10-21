@@ -1,0 +1,188 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package arquer_a;
+
+
+
+
+
+
+/**
+ *
+ * @author Carlos
+ */
+public class Arqueros {
+    
+    
+    
+    
+    
+    
+    
+    
+     public static int NivelJugador;
+     public static int NivelComputadora;
+     
+      public static int AsignarNivel()
+     {
+      return (int)(Math.random()*2);  //Ësto genera un número entero del 0 al 2 y lo devuelve. 
+      
+      // De ahora en adelante el valor de 0 será para principiante, el 1 para intermedio y el 2 para profesional.
+         
+     }
+     
+     
+     //La siguiente clase recibirá un vector con dos coordenadas x e y; y devolverá el mismo vector con errores dependiendo de el nivel asignado al jugador
+     // o computadora
+     
+public static double [] TiroConError(double c[], int d){
+    
+    
+    double[] devolver= new double[2];
+    if(d==0){
+        double e1= Math.round((2*Math.random()-1)*100);
+        double ex=e1/100;
+        System.out.println(ex);
+        double e2= Math.round((2*Math.random()-1)*100);
+        double ey=e2/100;
+        System.out.println(ey);
+        
+        devolver[0]=c[0]+ex;      
+        devolver[1]=c[1]+ey; 
+        
+    }
+    
+    
+    
+       if(d==1){
+        
+           
+        double e1= Math.round((2*Math.random()-1)*100);
+        double ex=e1/400;
+        double e2= Math.round((2*Math.random()-1)*100);
+        double ey=e2/400;
+           
+        
+        devolver[0]=c[0]+ex;      
+        devolver[1]=c[1]+ey; 
+        
+    }
+    
+
+
+   if(d==2){
+        
+        double e1= Math.round((2*Math.random()-1)*100);
+        double ex=e1/2000;
+        double e2= Math.round((2*Math.random()-1)*100);
+        double ey=e2/2000;
+        
+        devolver[0]=c[0]+ex;      
+        devolver[1]=c[1]+ey; 
+        
+    }
+    
+
+  devolver[0]=Math.round(devolver[0]*100);
+  devolver[0]=devolver[0]/100;
+  devolver[1]=Math.round(devolver[1]*100);
+  devolver[1]=devolver[1]/100; //Si no hacía esto, que parece redundante, a veces de forma aleatoria me devolvía vectores con entradas que tenia muchos decimales
+       
+    return devolver;
+    
+        
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+public static int GetNivelJugador(){
+    
+ return  NivelJugador;  
+    
+    
+}
+
+
+
+public static int GetNivelComputadora(){
+    
+ return  NivelComputadora;  
+    
+    
+}
+
+
+
+
+public static void SetNivelJugador(int d){
+    
+NivelJugador=d;  
+    
+    
+}
+
+
+
+public static void SetNivelComputadora(int d){
+    
+NivelComputadora=d;  
+    
+    
+}
+
+
+
+
+
+   
+
+ public static double[] IA(int d){
+    
+double c[]= new double [2];
+
+
+c[0]=1;
+c[1]=1;
+
+return c;
+    
+    
+}
+
+        
+        
+        
+    
+
+
+
+
+
+
+
+} //Paréntesis de la clase
+    
+    
+    
+ 
+
+
+
+
+
+
+
