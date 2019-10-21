@@ -1,1 +1,794 @@
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package arquer_a;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author Carlos
+ */
+public class Arquer_a {
+    
+    
+    
+    
+    
+    
+    public static void main(String[] args) {
+        
+        
+        Scanner sc= new Scanner (System.in);
+        
+      Arqueros.SetNivelJugador(Arqueros.AsignarNivel());
+        
+      
+      
+      
+      
+        
+        
+        
+        System.out.println("Por favor digite 1 para jugar con una interfaz, 2 para jugar sin ella");
+       
+        
+        
+        int p= sc.nextInt();
+        
+        
+        
+        while(p!=1 && p!=2){
+            
+            System.out.println("Por favor digite una entrada válida: 1 para jugar con una interfaz, 2 para jugar sin ella");
+            p= sc.nextInt();
+            
+        }
+        
+        
+        
+        
+        
+    boolean jugar=true;
+    
+    
+    
+    while(jugar=true){
+        
+       int menu1=0;
+       int menu11=0; 
+     
+      String [] choices = { "Iniciar nueva partida", "Ver puntaje más alto", "Configurar cantidad de sets", "Configurar cantidad de lanzamientos", "Salir" };
+      String result = null;
+     
+      if(p==1){
+      result = (String) JOptionPane.showInputDialog(null, "Escoja una opción", "Arquería", JOptionPane.QUESTION_MESSAGE, null, choices, "Finalizar" );
+        
+      
+      if(result.equals(choices[0])){menu11=1; }  
+      if(result.equals(choices[1])){menu11=2; }
+      if(result.equals(choices[2])){menu11=3; }
+      if(result.equals(choices[3])){menu11=4; }
+      if(result.equals(choices[4])){menu11=5; }
+      
+      
+      }
+      
+      
+        
+        if(p==2){
+        
+     System.out.println("1.Iniciar nueva partida ");
+     System.out.println("2.Ver puntaje más alto" );
+     System.out.println("3.Configurar cantidad de sets");
+     System.out.println("4.Configurar cantidad de lanzamiento."); 
+     System.out.println("5.Salir.");
+     
+     
+      menu1= sc.nextInt();
+     
+        }
+        
+        
+        
+        
+     if(menu1==1|| menu11==1){
+     
+     
+     for(int v=1; v<=Juez.GetSets();v++){
+     
+         Viento.SetNivelViento();
+         Viento.GenerarDirecci_on();
+     System.out.println("Inicia el set "+v);
+     
+     for(int z=1; z<=Juez.GetLanzamientos();z++){
+     //lanzamientos dentro de un mismo set
+     
+      System.out.println("Inicia el lanzamiento "+z);
+      
+       double[] coordenadasC00=new double[2];
+       double[] coordenadasJ0=new double[2];
+       double[] coordenadasC0=new double[2];
+       double[] coordenadasJ1=new double[2];
+       double[] coordenadasC1=new double[2];
+       double[] coordenadasJ2=new double[2];
+       double[] coordenadasC2=new double[2];
+    
+       
+       
+       if(p==1){
+       
+       String primerNumero= JOptionPane.showInputDialog("Introduzca la cordenada x");
+       double numerox = Double.parseDouble(primerNumero);
+       String segundoNumero= JOptionPane.showInputDialog("Introduzca la cordenada y");
+       double numeroy = Double.parseDouble(segundoNumero);
+                    
+  
+       
+       Viento.GenerarIntensidad();
+       
+      coordenadasJ0[0]= Math.round(100*numerox);
+      coordenadasJ0[0]= coordenadasJ0[0]/100;
+      coordenadasJ0[1]= Math.round(100*numeroy);
+      coordenadasJ0[1]= coordenadasJ0[1]/100;
+      coordenadasJ1=Arqueros.TiroConError(coordenadasJ0,Arqueros.GetNivelJugador());
+      coordenadasJ2=Viento.TiroConViento(coordenadasJ1);
+      
+JOptionPane.showMessageDialog(null,"El jugador intenta tirar al punto ("+ coordenadasJ0[0]+","+coordenadasJ0[1]+")","Lanzamiento", JOptionPane.PLAIN_MESSAGE);
+JOptionPane.showMessageDialog(null,"Dada su experiencia, tira al punto ("+ coordenadasJ1[0]+","+coordenadasJ1[1]+")","Lanzamiento", JOptionPane.PLAIN_MESSAGE);
+JOptionPane.showMessageDialog(null,"Sin embargo, el viento desvía su tiro al punto ("+ coordenadasJ2[0]+","+coordenadasJ2[1]+")","Lanzamiento", JOptionPane.PLAIN_MESSAGE);
+JOptionPane.showMessageDialog(null,"El jugador obtiene "+ Blanco.AsignarPuntaje(coordenadasJ2) +" puntos","Lanzamiento", JOptionPane.PLAIN_MESSAGE);
+     
+   
+     
+     Juez.SetPuntajeSetJugador(Juez.GetPuntajeSetJugador()+Blanco.AsignarPuntaje(coordenadasJ2));
+     
+     Juez.SetPuntajeTotal(Juez.GetPuntajeTotal()+Blanco.AsignarPuntaje(coordenadasJ2));
+     
+  
+       System.out.println("Ahora es el turno de la IA"); 
+       coordenadasC00=Arqueros.IA((int) (Math.random()));
+       coordenadasC0[0]= Math.round(100*coordenadasC00[0]);
+       coordenadasC0[0]= coordenadasC0[0]/100;
+         
+      coordenadasC0[1]= Math.round(100*coordenadasC00[1]);
+      coordenadasC0[1]= coordenadasC0[1]/100;
+      coordenadasC1=Arqueros.TiroConError(coordenadasC0,Arqueros.GetNivelComputadora() );
+      coordenadasC2=Viento.TiroConViento(coordenadasC1);
+
+      
+            
+JOptionPane.showMessageDialog(null,"La computadora intenta tirar al punto ("+ coordenadasC0[0]+","+coordenadasC0[1]+")","Lanzamiento", JOptionPane.PLAIN_MESSAGE);
+JOptionPane.showMessageDialog(null,"Dada su experiencia, tira al punto ("+ coordenadasC1[0]+","+coordenadasC1[1]+")","Lanzamiento", JOptionPane.PLAIN_MESSAGE);
+JOptionPane.showMessageDialog(null,"Sin embargo, el viento desvía su tiro al punto ("+ coordenadasC2[0]+","+coordenadasC2[1]+")","Lanzamiento", JOptionPane.PLAIN_MESSAGE);
+JOptionPane.showMessageDialog(null,"La computadora obtiene "+ Blanco.AsignarPuntaje(coordenadasC2) +" puntos","Lanzamiento", JOptionPane.PLAIN_MESSAGE);
+Juez.SetPuntajeSetComputadora(Juez.GetPuntajeSetComputadora()+Blanco.AsignarPuntaje(coordenadasC2));
+       
+       
+       
+       
+       
+       
+       
+       }
+       
+       
+       
+       
+       
+       if(p==2){
+       Viento.GenerarIntensidad();
+       System.out.println("Por favor ingrese las coordenada x"); 
+       coordenadasJ0[0]= Math.round(100*sc.nextDouble());
+       coordenadasJ0[0]= coordenadasJ0[0]/100;
+       System.out.println("Por favor ingrese la coordenada y");  
+      coordenadasJ0[1]= Math.round(100*sc.nextDouble());
+      coordenadasJ0[1]= coordenadasJ0[1]/100;
+      coordenadasJ1=Arqueros.TiroConError(coordenadasJ0,Arqueros.GetNivelJugador());
+      coordenadasJ2=Viento.TiroConViento(coordenadasJ1);
+
+      System.out.println("El jugador intenta tirar al punto ("+ coordenadasJ0[0]+","+coordenadasJ0[1]+")"); 
+      System.out.println("Dada su experiencia, tira al punto ("+ coordenadasJ1[0]+","+coordenadasJ1[1]+")");
+      System.out.println("Sin embargo, el viento desvía su tiro al punto ("+ coordenadasJ2[0]+","+coordenadasJ2[1]+")");
+     
+     System.out.println("El jugador obtiene "+ Blanco.AsignarPuntaje(coordenadasJ2) +" puntos");
+     
+     Juez.SetPuntajeSetJugador(Juez.GetPuntajeSetJugador()+Blanco.AsignarPuntaje(coordenadasJ2));
+     
+     Juez.SetPuntajeTotal(Juez.GetPuntajeTotal()+Blanco.AsignarPuntaje(coordenadasJ2));
+     
+  
+       System.out.println("Ahora es el turno de la IA"); 
+       coordenadasC00=Arqueros.IA((int) (Math.random()));
+       coordenadasC0[0]= Math.round(100*coordenadasC00[0]);
+       coordenadasC0[0]= coordenadasC0[0]/100;
+         
+      coordenadasC0[1]= Math.round(100*coordenadasC00[1]);
+      coordenadasC0[1]= coordenadasC0[1]/100;
+      coordenadasC1=Arqueros.TiroConError(coordenadasC0,Arqueros.GetNivelComputadora() );
+      coordenadasC2=Viento.TiroConViento(coordenadasC1);
+
+      System.out.println("La computadora intenta apuntar a la coordenada("+ coordenadasC0[0]+","+coordenadasC0[1]+")"); 
+      System.out.println("Dada su experiencia, la flecha se dirige a ("+ coordenadasC1[0]+","+coordenadasC1[1]+")");
+      System.out.println("Sin embargo, el viento desvía su tiro al punto ("+ coordenadasC2[0]+","+coordenadasC2[1]+")");
+     
+     System.out.println("La computadora obtiene  "+ Blanco.AsignarPuntaje(coordenadasC2) +" puntos");
+     
+     Juez.SetPuntajeSetComputadora(Juez.GetPuntajeSetComputadora()+Blanco.AsignarPuntaje(coordenadasC2));
+     
+       }
+     
+     
+     
+     
+    
+     
+     }
+
+
+if(p==2){     
+      System.out.println("Ha terminado un set");
+      System.out.println("Los puntos obtenidos por el jugador fueron "+ Juez.GetPuntajeSetJugador());
+      System.out.println("Los puntos obtenidos por la computadora fueron "+ Juez.GetPuntajeSetComputadora());
+}
+
+
+
+
+if(p==1){
+
+JOptionPane.showMessageDialog(null,"Ha terminado un set","Fin del Set", JOptionPane.PLAIN_MESSAGE);
+JOptionPane.showMessageDialog(null,"Los puntos obtenidos por el jugador fueron "+ Juez.GetPuntajeSetJugador(),"Fin del Set", JOptionPane.PLAIN_MESSAGE);
+JOptionPane.showMessageDialog(null,"Los puntos obtenidos por la computadora fueron "+ Juez.GetPuntajeSetComputadora(),"Fin del Set", JOptionPane.PLAIN_MESSAGE);
+
+
+}
+      if(Juez.GetPuntajeSetJugador()>Juez.GetPuntajeSetComputadora()){
+      if(p==2){
+      System.out.println("El Jugador ha ganado este set");}
+      
+      
+      
+      if(p==1){
+          
+         JOptionPane.showMessageDialog(null,"El Jugador es el ganador del set","Ganador del Set", JOptionPane.PLAIN_MESSAGE); 
+          
+          
+      }
+      
+      Juez.SetSetsGanadosJugador(Juez.GetSetsGanadosJugador()+1);
+      
+      }
+      
+      
+       if(Juez.GetPuntajeSetJugador()<Juez.GetPuntajeSetComputadora()){
+      
+      if(p==2){
+       System.out.println("La computadora ha ganado este set");}
+      
+      
+     
+      
+      
+      
+      if(p==1){
+          
+         JOptionPane.showMessageDialog(null,"La computadora ha ganado este set","Ganador del Set", JOptionPane.PLAIN_MESSAGE); 
+          
+          
+      }
+      
+      
+       Juez.SetSetsGanadosComputadora(Juez.GetSetsGanadosComputadora()+1);
+      
+      }
+       
+        if(Juez.GetPuntajeSetJugador()==Juez.GetPuntajeSetComputadora()){
+      
+      if(p==2){
+      System.out.println("Hay un empate");}
+      
+      
+      
+      if(p==1){
+          
+         JOptionPane.showMessageDialog(null,"Hay un empate","No hay ganador del Set", JOptionPane.PLAIN_MESSAGE); 
+          
+          
+      }
+      
+      }
+      
+      Juez.ResetearContadorPuntosSet();
+      
+     
+     
+     
+     }
+     
+     
+     
+     if(Juez.GetSetsGanadosJugador()>Juez.GetSetsGanadosComputadora()){
+      
+         
+        if(p==2){
+      System.out.println("Felicidades! El Jugador ha ganado!");} 
+         
+         
+         
+      if(p==1){
+
+          
+         JOptionPane.showMessageDialog(null,"El Jugador es el ganador definitivo. ¡Felicidades!","Ganador definitivo", JOptionPane.PLAIN_MESSAGE); 
+          
+          
+      }
+      
+      }
+      
+      
+       if(Juez.GetSetsGanadosJugador()<Juez.GetSetsGanadosComputadora()){
+     if(p==2) {
+      System.out.println("La computadora ha ganado");
+     }
+     
+     
+     if(p==2){ 
+
+          
+         JOptionPane.showMessageDialog(null,"La computadora gana!","Ganador definitivo", JOptionPane.PLAIN_MESSAGE); 
+          
+          
+      }
+     
+      }
+       
+        if(Juez.GetSetsGanadosJugador()==Juez.GetSetsGanadosComputadora()){
+      
+      if(p==2){
+       System.out.println("Hay un empate. Se debe de ir a muerte súbita");
+      }
+      
+      if(p==1){ 
+
+          
+         JOptionPane.showMessageDialog(null,"Hay un empate y debe de haber una muerte súbita","Empate", JOptionPane.PLAIN_MESSAGE); 
+          
+      }    
+      
+      
+       
+       
+       
+       
+       
+       
+       
+       
+       //Muerte súbida
+       
+       
+       boolean MuerteS_bita=true;
+        Viento.SetNivelViento();
+         Viento.GenerarDirecci_on();
+       
+         
+        while(MuerteS_bita==true){ 
+         
+          if(p==1){
+       
+           
+       double[] coordenadasC00=new double[2];
+       double[] coordenadasJ0=new double[2];
+       double[] coordenadasC0=new double[2];
+       double[] coordenadasJ1=new double[2];
+       double[] coordenadasC1=new double[2];
+       double[] coordenadasJ2=new double[2];
+       double[] coordenadasC2=new double[2];
+       
+       Viento.GenerarIntensidad();
+       
+       
+       String primerNumero= JOptionPane.showInputDialog("Introduzca la cordenada x");
+       double numerox = Double.parseDouble(primerNumero);
+       String segundoNumero= JOptionPane.showInputDialog("Introduzca la cordenada y");
+       double numeroy = Double.parseDouble(segundoNumero);
+                    
+  
+       
+       Viento.GenerarIntensidad();
+       
+      coordenadasJ0[0]= Math.round(100*numerox);
+      coordenadasJ0[0]= coordenadasJ0[0]/100;
+      coordenadasJ0[1]= Math.round(100*numeroy);
+      coordenadasJ0[1]= coordenadasJ0[1]/100;
+      coordenadasJ1=Arqueros.TiroConError(coordenadasJ0,Arqueros.GetNivelJugador());
+      coordenadasJ2=Viento.TiroConViento(coordenadasJ1);
+      
+JOptionPane.showMessageDialog(null,"El jugador intenta tirar al punto ("+ coordenadasJ0[0]+","+coordenadasJ0[1]+")","Lanzamiento", JOptionPane.PLAIN_MESSAGE);
+JOptionPane.showMessageDialog(null,"Dada su experiencia, tira al punto ("+ coordenadasJ1[0]+","+coordenadasJ1[1]+")","Lanzamiento", JOptionPane.PLAIN_MESSAGE);
+JOptionPane.showMessageDialog(null,"Sin embargo, el viento desvía su tiro al punto ("+ coordenadasJ2[0]+","+coordenadasJ2[1]+")","Lanzamiento", JOptionPane.PLAIN_MESSAGE);
+JOptionPane.showMessageDialog(null,"El jugador obtiene "+ Blanco.AsignarPuntaje(coordenadasJ2) +" puntos","Lanzamiento", JOptionPane.PLAIN_MESSAGE);
+  
+       System.out.println("Ahora es el turno de la IA"); 
+       coordenadasC00=Arqueros.IA((int) (Math.random()));
+       coordenadasC0[0]= Math.round(100*coordenadasC00[0]);
+       coordenadasC0[0]= coordenadasC0[0]/100;
+         
+      coordenadasC0[1]= Math.round(100*coordenadasC00[1]);
+      coordenadasC0[1]= coordenadasC0[1]/100;
+      coordenadasC1=Arqueros.TiroConError(coordenadasC0,Arqueros.GetNivelComputadora() );
+      coordenadasC2=Viento.TiroConViento(coordenadasC1);
+
+      
+            
+JOptionPane.showMessageDialog(null,"La computadora intenta tirar al punto ("+ coordenadasC0[0]+","+coordenadasC0[1]+")","Lanzamiento", JOptionPane.PLAIN_MESSAGE);
+JOptionPane.showMessageDialog(null,"Dada su experiencia, tira al punto ("+ coordenadasC1[0]+","+coordenadasC1[1]+")","Lanzamiento", JOptionPane.PLAIN_MESSAGE);
+JOptionPane.showMessageDialog(null,"Sin embargo, el viento desvía su tiro al punto ("+ coordenadasC2[0]+","+coordenadasC2[1]+")","Lanzamiento", JOptionPane.PLAIN_MESSAGE);
+JOptionPane.showMessageDialog(null,"La computadora obtiene "+ Blanco.AsignarPuntaje(coordenadasC2) +" puntos","Lanzamiento", JOptionPane.PLAIN_MESSAGE);
+
+       
+     
+    if(Blanco.AsignarPuntaje(coordenadasJ2) > Blanco.AsignarPuntaje(coordenadasC2) )    
+    {
+        
+     JOptionPane.showMessageDialog(null,"El jugador ha ganado! Felicidades! ","Lanzamiento", JOptionPane.PLAIN_MESSAGE);   
+    
+       MuerteS_bita=false; 
+        
+    }
+    
+    if(Blanco.AsignarPuntaje(coordenadasJ2) < Blanco.AsignarPuntaje(coordenadasC2) )    
+    {
+        
+        
+       JOptionPane.showMessageDialog(null,"La computadora ha ganado","Lanzamiento", JOptionPane.PLAIN_MESSAGE);   
+    
+       MuerteS_bita=false; 
+        
+    }
+         
+           
+           
+           
+           
+           
+       }
+       
+       
+         }
+         
+         
+         
+         
+         
+         if(p==2){
+       while(MuerteS_bita==true){
+           
+       double[] coordenadasC00=new double[2];
+       double[] coordenadasJ0=new double[2];
+       double[] coordenadasC0=new double[2];
+       double[] coordenadasJ1=new double[2];
+       double[] coordenadasC1=new double[2];
+       double[] coordenadasJ2=new double[2];
+       double[] coordenadasC2=new double[2];
+       
+       Viento.GenerarIntensidad();
+       System.out.println("Por favor ingrese las coordenada x"); 
+       coordenadasJ0[0]= Math.round(100*sc.nextDouble());
+       coordenadasJ0[0]= coordenadasJ0[0]/100;
+       System.out.println("Por favor ingrese la coordenada y");  
+      coordenadasJ0[1]= Math.round(100*sc.nextDouble());
+      coordenadasJ0[1]= coordenadasJ0[1]/100;
+      coordenadasJ1=Arqueros.TiroConError(coordenadasJ0,Arqueros.GetNivelJugador());
+      coordenadasJ2=Viento.TiroConViento(coordenadasJ1);
+
+      System.out.println("El jugador intenta tirar al punto ("+ coordenadasJ0[0]+","+coordenadasJ0[1]+")"); 
+      System.out.println("Dada su experiencia, tira al punto ("+ coordenadasJ1[0]+","+coordenadasJ1[1]+")");
+      System.out.println("Sin embargo, el viento desvía su tiro al punto ("+ coordenadasJ2[0]+","+coordenadasJ2[1]+")");
+     
+     System.out.println("El jugador obtiene "+ Blanco.AsignarPuntaje(coordenadasJ2) +" puntos");
+     
+      
+        
+  
+       System.out.println("Ahora es el turno de la IA"); 
+       coordenadasC00=Arqueros.IA((int) (Math.random()));
+       coordenadasC0[0]= Math.round(100*coordenadasC00[0]);
+       coordenadasC0[0]= coordenadasC0[0]/100;
+         
+      coordenadasC0[1]= Math.round(100*coordenadasC00[1]);
+      coordenadasC0[1]= coordenadasC0[1]/100;
+      coordenadasC1=Arqueros.TiroConError(coordenadasC0,Arqueros.GetNivelComputadora() );
+      coordenadasC2=Viento.TiroConViento(coordenadasC1);
+
+      System.out.println("La computadora intenta apuntar a la coordenada("+ coordenadasC0[0]+","+coordenadasC0[1]+")"); 
+      System.out.println("Dada su experiencia, la flecha se dirige a ("+ coordenadasC1[0]+","+coordenadasC1[1]+")");
+      System.out.println("Sin embargo, el viento desvía su tiro al punto ("+ coordenadasC2[0]+","+coordenadasC2[1]+")");
+     
+     System.out.println("La computadora obtiene  "+ Blanco.AsignarPuntaje(coordenadasC2) +" puntos");
+     
+    if(Blanco.AsignarPuntaje(coordenadasJ2) > Blanco.AsignarPuntaje(coordenadasC2) )    
+    {
+        
+        
+       System.out.println("El jugador ha ganado! Felicidades! " );
+       MuerteS_bita=false; 
+        
+    }
+    
+    if(Blanco.AsignarPuntaje(coordenadasJ2) < Blanco.AsignarPuntaje(coordenadasC2) )    
+    {
+        
+        
+       System.out.println("La computadora ha ganado " );
+       MuerteS_bita=false; 
+        
+    }
+         
+           
+           
+           
+           
+           
+       }
+       
+       
+         }//SIn interfaz súbita
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+      }
+        
+        
+        if(Juez.GetMejorPuntaje()<Juez.GetPuntajeTotal()){
+        
+        Juez.SetMejorPuntaje(Juez.GetPuntajeTotal());
+        
+        
+        }
+     
+     Juez.SetPuntajeTotal(0); //Se resetea el contador total para usarse en otra partida
+     
+     
+     
+     //Acá se debe definir un ganador global. De no haberlo debe de haber un sudden death
+     
+     
+     
+     }
+     
+     
+     
+           
+     
+     
+     
+     
+     if(menu1==2 || menu11==2){if(p==2){Juez.ImprimirRecords();}
+     
+     if(p==1){
+     JOptionPane.showMessageDialog(null,Juez.StringRecords(),"Lanzamiento", JOptionPane.PLAIN_MESSAGE);   
+     }
+     
+     
+     
+     
+     }
+     
+     
+     
+    if(menu1==3 || menu11==3){
+        
+      
+  
+        if(p==1){
+     JOptionPane.showMessageDialog(null,"Actualmente la cantidad de sets es de " +Juez.GetSets(),"Sets", JOptionPane.PLAIN_MESSAGE);   
+     
+         String NuevoSets= JOptionPane.showInputDialog("Introduzca la nueva cantidad de sets entre 1 y 10 inclusive");
+       int NuevoSets2 = Integer.parseInt(NuevoSets); 
+        
+        
+        while(NuevoSets2>10 || NuevoSets2<1){
+     NuevoSets= JOptionPane.showInputDialog("No es una entrada válida. Por favor introduzca una cantidad de sets válida");
+     NuevoSets2 = Integer.parseInt(NuevoSets);
+            
+     }
+       
+     if( NuevoSets2==Juez.GetSets()) {
+         
+         
+JOptionPane.showMessageDialog(null,"La cantidad que introdujo no realiza ningún cambio","Apropiado", JOptionPane.PLAIN_MESSAGE);
+     
+
+
+
+
+     }
+       
+
+     
+      if( NuevoSets2>=1 && NuevoSets2<=10 && NuevoSets2!=Juez.GetSets() ) {
+         
+         
+JOptionPane.showMessageDialog(null,"La cantidad qes apropiada. Se realizará el cambio y se reiniciará el mejor puntaje","Apropiado", JOptionPane.PLAIN_MESSAGE);
+ Juez.ResetearMejorPuntaje();
+ Juez.SetSets(NuevoSets2);
+
+
+     }
+     
+     
+    
+     
+        
+        
+        }
+        
+        
+        
+        
+        
+        
+     if(p==2){System.out.println("Actualmente la cantidad de sets es de " +Juez.GetSets()+". ¿Desea modificarlos? Presione S para Sí o N para No");
+     System.out.println("Atención: si modifica los sets, el record de mejor puntuación se reiniciará");
+     String menu3= sc.next();
+    
+     while (!"S".equals(menu3) && !"N".equals(menu3) && !"s".equals(menu3) && !"n".equals(menu3)){
+     
+     
+     System.out.println("Por favor digite una entrada válida");
+     
+     menu3= sc.next();
+     
+     }
+     
+     
+     if( "S".equals(menu3) ||"s".equals(menu3)){ 
+     System.out.println("Por favor digite la cantidad de sets que desea. Debe ser un número entre 1 y 10");
+     
+     int NuevoSets= sc.nextInt();
+     
+     while(NuevoSets>10 || NuevoSets<1){
+      System.out.println("Por favor digite la cantidad de sets que desea. Debe ser un número entre 1 y 10");
+     
+       NuevoSets= sc.nextInt();
+       
+     }
+     if(NuevoSets!=Juez.GetSets()){Juez.ResetearMejorPuntaje();}
+     Juez.SetSets(NuevoSets);
+     
+     };
+     
+     }
+     
+    } 
+      
+    if(menu1==4 || menu11==4 ){
+        
+        
+        
+        
+        
+        
+        
+        
+         if(p==1){
+     JOptionPane.showMessageDialog(null,"Actualmente la cantidad de lanzamientos es de " +Juez.GetLanzamientos(),"Lanzamientos", JOptionPane.PLAIN_MESSAGE);   
+     
+       String NuevoLanzamientos= JOptionPane.showInputDialog("Introduzca la nueva cantidad de sets entre 1 y 10 inclusive");
+       int NuevoLanzamientos2 = Integer.parseInt(NuevoLanzamientos); 
+        
+        
+        while(NuevoLanzamientos2>10 || NuevoLanzamientos2<1){
+     NuevoLanzamientos= JOptionPane.showInputDialog("No es una entrada válida. Por favor introduzca una cantidad de sets válida");
+      NuevoLanzamientos2 = Integer.parseInt(NuevoLanzamientos); 
+            
+     }
+       
+     if( NuevoLanzamientos2==Juez.GetLanzamientos()) {
+         
+         
+JOptionPane.showMessageDialog(null,"La cantidad que introdujo no realiza ningún cambio","Apropiado", JOptionPane.PLAIN_MESSAGE);
+     
+
+
+
+
+     }
+       
+
+     
+      if( NuevoLanzamientos2>=1 && NuevoLanzamientos2<=10 && NuevoLanzamientos2!=Juez.GetSets()) {
+         
+         
+JOptionPane.showMessageDialog(null,"La cantidad es apropiada. Se realizará el cambio y se reiniciará el mejor puntaje","Apropiado", JOptionPane.PLAIN_MESSAGE);
+ Juez.ResetearMejorPuntaje();
+ Juez.SetLanzamientos(NuevoLanzamientos2);
+
+
+     }
+     
+     
+    
+     
+        
+        
+        }
+        
+        
+        
+        
+        
+    if(p==2){    
+    System.out.println("Actualmente la cantidad de lanzamientos es de " +Juez.GetLanzamientos()+". ¿Desea modificarlos? Presione S para sí o N para no");
+    
+    System.out.println("Atención: si modifica los lanzamientos, el record de mejor puntuación se reiniciará"); 
+    
+     String menu4= sc.next();
+   
+     while (!"S".equals(menu4) && !"N".equals(menu4) && !"s".equals(menu4) && !"n".equals(menu4)){
+     
+     
+     System.out.println("Por favor digite una entrada válida");
+     
+     menu4= sc.next();
+     
+     }
+     
+     
+     if( "S".equals(menu4) ||"s".equals(menu4)){ 
+     System.out.println("Por favor digite la cantidad de lanzamientos que desea. Debe ser un número entre 1 y 10");
+     
+     int NuevoLanzamientos= sc.nextInt();
+     
+     while(NuevoLanzamientos>10 || NuevoLanzamientos<1){
+      System.out.println("Por favor digite la cantidad de sets que desea. Debe ser un número entre 1 y 10");
+     
+       NuevoLanzamientos= sc.nextInt();
+       
+     }
+     if(NuevoLanzamientos!=Juez.GetLanzamientos()){Juez.ResetearMejorPuntaje();}
+     Juez.SetLanzamientos(NuevoLanzamientos);
+     
+     };
+
+    }
+     
+     
+     
+    
+    }
+     
+     
+     if(menu1==5 || menu11==5){System.exit( 0 );}
+     
+      
+    }
+        
+        
+    }
+    
+    
+    
+    
+    }
+    
+    
+    
+    
+    
+    
+   
