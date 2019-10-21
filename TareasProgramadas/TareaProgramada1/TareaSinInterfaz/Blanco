@@ -1,0 +1,42 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package arquer_a;
+
+
+
+
+
+
+
+
+
+public class Blanco {
+
+
+    public static int AsignarPuntaje(double d[]){
+
+
+     int Puntaje=0;   
+     double DistanciaDelCentro= Math.sqrt((d[0]-1)*(d[0]-1)+(d[1]-1)*(d[1]-1));   
+        
+     if (DistanciaDelCentro <=0.05){Puntaje=100;}   
+     if (DistanciaDelCentro>0.05 && DistanciaDelCentro<=0.4 ){Puntaje=20;}     
+     if (DistanciaDelCentro>0.4 && DistanciaDelCentro<=1 ){Puntaje=15;}
+        
+        
+        return Puntaje;
+    }
+        
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+    
