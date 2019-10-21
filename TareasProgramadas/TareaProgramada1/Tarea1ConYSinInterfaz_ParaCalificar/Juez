@@ -1,0 +1,254 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package arquer_a;
+
+
+public class Juez {
+   
+public static int Sets=3;
+public static int Lanzamientos=3;   
+public static int MejorPuntaje=0;
+public static int PuntajeSetJugador=0;
+public static int PuntajeSetComputadora=0;
+public static int SetsGanadosJugador=0;
+public static int SetsGanadosComputadora=0;
+public static int PuntajeTotal=0;
+public static int Set=0;
+public static int NivelJugador;
+public static int NivelComputadora;
+
+
+
+
+
+
+
+
+public static void SetMejorPuntaje(int d){
+  
+MejorPuntaje=d;
+    
+        
+}
+
+
+public static int GetMejorPuntaje(){
+  
+return MejorPuntaje;
+    
+        
+}
+
+
+
+public static void SetSetsGanadosJugador(int d){
+  
+SetsGanadosJugador=d;
+    
+        
+}
+
+
+public static int GetSetsGanadosJugador(){
+  
+return SetsGanadosJugador;
+    
+        
+}
+
+
+
+public static void SetSetsGanadosComputadora(int d){
+  
+SetsGanadosComputadora=d;
+    
+        
+}
+
+
+public static int GetSetsGanadosComputadora(){
+  
+return SetsGanadosComputadora;
+    
+        
+}
+
+
+
+
+public static void SetPuntajeSetJugador(int d){
+  
+PuntajeSetJugador=d;
+    
+        
+}
+
+
+public static int GetPuntajeSetJugador(){
+  
+return PuntajeSetJugador;
+    
+        
+}
+
+
+
+public static void SetPuntajeSetComputadora(int d){
+  
+PuntajeSetComputadora=d;
+    
+        
+}
+
+
+public static int GetPuntajeSetComputadora(){
+  
+return PuntajeSetComputadora;
+    
+        
+}
+
+
+
+
+public static void SetPuntajeTotal(int d){
+  
+PuntajeTotal=d;
+    
+    
+    
+}
+
+
+public static int GetPuntajeTotal(){
+  
+return PuntajeTotal;
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+public static int GetNivelComputadora(){
+  
+   return NivelComputadora;
+    
+    
+    
+}
+
+
+public static int GetNiveljugador(){
+  
+   return NivelJugador;
+    
+}
+
+
+public static void SetSets(int d){
+  
+    Sets=d;
+    
+    
+    
+}
+
+public static void ImprimirRecords(){
+
+System.out.println("A continuación el mejor puntaje para " +Sets+ " sets y "+Lanzamientos+ " lanzamientos.");
+
+
+System.out.println(MejorPuntaje);
+
+
+}
+
+public static String StringRecords(){
+
+String mejor="A continuación el mejor puntaje para " +Sets+ " sets y "+Lanzamientos+ " lanzamientos: "+MejorPuntaje +" puntos";
+
+return mejor;
+}
+
+
+public static void ResetearContadorPuntosSet(){
+    
+PuntajeSetJugador=0;
+PuntajeSetComputadora=0;
+}
+
+public static void ResetearContadorTotales(){
+PuntajeTotal=0;
+}
+
+
+
+public static void ResetearMejorPuntaje(){
+PuntajeTotal=0;
+}
+
+
+
+public static int GetSets(){
+  
+    return Sets;
+    
+    
+    
+}
+
+
+
+
+
+public static void SetLanzamientos(int d){
+  
+    Lanzamientos=d;
+    
+        
+}
+
+
+public static int GetLanzamientos(){
+  
+    return Lanzamientos;
+    
+    
+    
+}
+
+
+public static void ActualizarRecords(int puntuacion){
+  
+ if(MejorPuntaje<puntuacion){
+     
+    MejorPuntaje=puntuacion; }
+     
+     
+ }
+    
+ 
+
+
+
+
+
+
+    
+}
+
+
+
+
