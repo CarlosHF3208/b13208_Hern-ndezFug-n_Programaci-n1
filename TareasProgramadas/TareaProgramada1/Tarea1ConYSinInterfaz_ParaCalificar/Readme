@@ -1,3 +1,5 @@
+Esta es la versión completa para calificar. Contiene ventanas pero puede también ejecutarse sin ellas
+
 *Al inicio el programa le preguntará si quiere correr el código con ventanas (digitar 1 de ser así) o sin ventanas (digitar 2). 
 *Si se corre el cósigo en Netbeans, por ejemplo, tener cuidado con que puede ser necesario minimizar la ventana de dicho software 
 para encontrar la ventana de Arquer_a. El código fue probado y no debería presentar problemas (demasiado evidentes)
